@@ -9,18 +9,13 @@ class App extends Component {
   getAmount = e => {
     this.setState({ amount: e.currentTarget.value });
   };
+
   render() {
     const { amount } = this.state;
     return (
       <>
         <input type='number' onChange={this.getAmount} />
-        <Currency amount={amount}>
-          {value => (
-            <>
-              <div>{value}</div>
-            </>
-          )}
-        </Currency>
+        <Currency amount={amount}>{value => <div>{value}</div>}</Currency>
       </>
     );
   }
