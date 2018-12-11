@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import Currency from './Currency';
 
 class App extends Component {
+  state = {
+    amount: 0
+  };
+
+  getAmount = e => {
+    this.setState({ amount: e.currentTarget.value });
+  };
   render() {
+    const { amount } = this.state;
     return (
       <>
-        <Currency>
-          {(handleChange, value) => (
+        <input type='number' onChange={this.getAmount} />
+        <Currency amount={amount}>
+          {value => (
             <>
-              <input type='number' onChange={handleChange} />
               <div>{value}</div>
             </>
           )}
