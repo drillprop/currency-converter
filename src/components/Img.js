@@ -5,7 +5,9 @@ import eur from '../assets/eur.jpg';
 import czk from '../assets/czk.jpg';
 
 const Image = styled.img`
-  max-height: 100vh;
+  height: 100vh;
+  max-width: 100%;
+  object-fit: cover;
 `;
 
 const Img = ({ currency }) => {
