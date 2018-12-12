@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Currency from './Currency';
 import styled from 'styled-components';
-import Img from './Img';
+import Aside from './Aside';
+import Main from './Main';
 
 const Container = styled.div`
   height: 100vh;
@@ -10,9 +10,6 @@ const Container = styled.div`
   justify-items: center;
   align-items: center;
 `;
-
-const Main = styled.main``;
-const Aside = styled.aside``;
 
 class App extends Component {
   state = {
@@ -28,25 +25,17 @@ class App extends Component {
       currency: e.currentTarget.value
     });
   };
-
   render() {
     const { amount, currency } = this.state;
     return (
       <Container>
-        <Aside>
-          <Img currency={currency} />
-        </Aside>
-        <Main>
-          <input type='number' onChange={this.getAmount} />
-          <select onChange={this.getCurrency}>
-            <option value='usd'>usd</option>
-            <option value='eur'>eur</option>
-            <option value='czk'>czk</option>
-          </select>
-          <Currency amount={amount} currency={currency}>
-            {value => <div>{value}</div>}
-          </Currency>
-        </Main>
+        <Aside currency={currency} />
+        <Main
+          amount={amount}
+          currency={currency}
+          getAmount={this.getAmount}
+          getCurrency={this.getCurrency}
+        />
       </Container>
     );
   }
