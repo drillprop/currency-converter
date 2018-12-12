@@ -20,15 +20,17 @@ class App extends Component {
     const { amount, currency } = this.state;
     return (
       <>
-        <input type='number' onChange={this.getAmount} />
-        <select onChange={this.getCurrency}>
-          <option value='usd'>usd</option>
-          <option value='eur'>eur</option>
-          <option value='czk'>czk</option>
-        </select>
-        <Currency amount={amount} currency={currency}>
-          {value => <div>{value}</div>}
-        </Currency>
+        <main>
+          <input type='number' onChange={this.getAmount} />
+          <select onChange={this.getCurrency}>
+            <option value='usd'>usd</option>
+            <option value='eur'>eur</option>
+            <option value='czk'>czk</option>
+          </select>
+          <Currency amount={amount} currency={currency}>
+            {value => <div>{value}</div>}
+          </Currency>
+        </main>
       </>
     );
   }
