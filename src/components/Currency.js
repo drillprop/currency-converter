@@ -7,18 +7,15 @@ class Currency extends Component {
   static defaultProps = {
     currency: 'usd'
   };
-  componentDidMount = async () => {
-    const { currency } = this.props;
-    const url = await fetch(
-      `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
-    );
-    const json = await url.json();
-    const rate = await json.rates[0].mid;
-    this.setState({ rate });
-  };
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = async prevProps => {
     if (prevProps !== this.props) {
-      console.log('bla');
+      const { currency } = this.props;
+      const url = await fetch(
+        `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
+      );
+      const json = await url.json();
+      const rate = await json.rates[0].mid;
+      this.setState({ rate });
     }
   };
 
