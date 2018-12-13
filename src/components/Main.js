@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import Currency from './Currency';
 import Heading from './Heading';
 
-const StyledMain = styled.main``;
+const StyledMain = styled.main`
+  margin-top: 50px;
+  margin-left: 100px;
+`;
 
 class Main extends Component {
   render() {

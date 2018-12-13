@@ -8,8 +8,6 @@ const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  justify-items: center;
-  align-items: center;
 `;
 
 class App extends Component {
