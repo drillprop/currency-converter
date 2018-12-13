@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Aside from './Aside';
 import Main from './Main';
+import GlobalStyle from '../utilities/GlobalStyle';
 
 const Container = styled.div`
   height: 100vh;
@@ -29,6 +30,7 @@ class App extends Component {
     const { amount, currency } = this.state;
     return (
       <Container>
+        <GlobalStyle />
         <Aside currency={currency} />
         <Main
           amount={amount}
