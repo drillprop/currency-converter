@@ -22,7 +22,7 @@ class Currency extends Component {
   render() {
     const { children, amount } = this.props;
     const { rate } = this.state;
-    return children(amount * rate);
+    return children((amount * rate).toFixed(2));
   }
 }
 
