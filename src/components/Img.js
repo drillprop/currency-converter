@@ -5,8 +5,10 @@ import eur from '../assets/eur.jpg';
 import czk from '../assets/czk.jpg';
 
 const Image = styled.img`
-  height: 100vh;
+  display: block;
+  margin: 0;
   max-width: 100%;
+  height: 100vh;
   object-fit: cover;
 `;
 
