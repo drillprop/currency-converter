@@ -4,14 +4,15 @@ import { serif, sansSerif } from '../utilities/fonts';
 
 const Title = styled.h1`
   margin-top: 0;
-  font-size: 40px;
+  font-size: 65px;
   font-family: ${serif};
   font-weight: 700;
 `;
 const SubTitle = styled.h3`
   margin-top: 0;
-  font-size: 20px;
+  font-size: 25px;
   font-family: ${sansSerif};
+  text-transform: uppercase;
   font-weight: 400;
   color: #303030;
 `;
