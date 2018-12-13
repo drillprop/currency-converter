@@ -26,6 +26,7 @@ module.exports = {
   ],
   mode: 'development',
   devServer: {
-    overlay: true
+    overlay: true,
+    stats: 'minimal'
   }
 };
