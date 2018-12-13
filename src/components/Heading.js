@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { serif, sansSerif } from '../utilities/fonts';
 
 const Title = styled.h1`
+  margin-top: 0;
   font-size: 40px;
   font-family: ${serif};
   font-weight: 700;
 `;
 const SubTitle = styled.h3`
-  font-size: 16px;
+  margin-top: 0;
+  font-size: 20px;
   font-family: ${sansSerif};
   font-weight: 400;
   color: #303030;
