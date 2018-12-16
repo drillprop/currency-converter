@@ -34,8 +34,12 @@ class Main extends Component {
   };
 
   getAmount = e => {
-    this.setState({ amount: e.currentTarget.value });
+    const amount = e.currentTarget.value;
+    if (+amount) {
+      this.setState({ amount });
+    }
   };
+
   getCurrency = e => {
     this.setState({
       currency: e.currentTarget.value
@@ -48,11 +52,7 @@ class Main extends Component {
         <Aside currency={currency} />
         <StyledMain>
           <Heading currency={currency} />
-          <StyledInput
-            placeholder='0'
-            type='number'
-            onChange={this.getAmount}
-          />
+          <StyledInput placeholder='0' type='text' onChange={this.getAmount} />
           <StyledSelect onChange={this.getCurrency}>
             <option value='usd'>usd</option>
             <option value='eur'>eur</option>
