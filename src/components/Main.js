@@ -11,6 +11,7 @@ const StyledMain = styled.main`
 `;
 const StyledInput = styled.input`
   color: #666;
+  padding: 4px 10px;
   margin: 0;
   font-size: 16px;
   border: none;
@@ -34,13 +35,18 @@ class Main extends Component {
   };
 
   getAmount = e => {
-    const amount = e.currentTarget.value;
+    const { currentTarget } = e;
+    const amount = currentTarget.value;
     const { length } = amount.toString();
+    console.log(e.currentTarget);
     if (+amount) {
       this.setState({ amount });
+    } else {
+      e.currentTarget.value = '';
+      this.setState({ amount: 0 });
     }
     if (length >= 5) {
-      e.currentTarget.style.width = `${length * 10}px`;
+      e.currentTarget.style.width = `${length * 9}px`;
     }
   };
 
