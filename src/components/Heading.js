@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { serif, sansSerif } from '../utilities/fonts';
 
 const Title = styled.h1`
+  color: #444;
   margin-top: 0;
   font-size: 50px;
   font-family: ${serif};
@@ -14,7 +15,7 @@ const SubTitle = styled.h3`
   font-family: ${sansSerif};
   text-transform: uppercase;
   font-weight: 400;
-  color: #303030;
+  color: #555;
 `;
 
 const Heading = () => (

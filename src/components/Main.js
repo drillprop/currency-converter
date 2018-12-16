@@ -9,18 +9,20 @@ const StyledMain = styled.main`
   margin-left: 100px;
 `;
 const StyledInput = styled.input`
+  color: #666;
   margin: 0;
   font-size: 16px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #666;
   font-family: ${sansSerif};
   width: 220px;
   height: 25px;
 `;
 const StyledSelect = styled.select`
+  color: #666;
   margin: 0;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #666;
   height: 28px;
   font-family: ${sansSerif};
   font-size: 16px;
@@ -39,7 +41,9 @@ class Main extends Component {
           <option value='czk'>czk</option>
         </StyledSelect>
         <Currency amount={amount} currency={currency}>
-          {value => <div style={{ display: 'inline' }}>{value} pln</div>}
+          {value => (
+            <div style={{ display: 'inline', color: '#666' }}>{value} pln</div>
+          )}
         </Currency>
       </StyledMain>
     );
