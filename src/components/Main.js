@@ -35,8 +35,12 @@ class Main extends Component {
 
   getAmount = e => {
     const amount = e.currentTarget.value;
+    const { length } = amount.toString();
     if (+amount) {
       this.setState({ amount });
+    }
+    if (length >= 5) {
+      e.currentTarget.style.width = `${length * 10}px`;
     }
   };
 
@@ -52,7 +56,12 @@ class Main extends Component {
         <Aside currency={currency} />
         <StyledMain>
           <Heading currency={currency} />
-          <StyledInput placeholder='0' type='text' onChange={this.getAmount} />
+          <StyledInput
+            placeholder='0'
+            type='text'
+            onChange={this.getAmount}
+            maxLength={15}
+          />
           <StyledSelect onChange={this.getCurrency}>
             <option value='usd'>usd</option>
             <option value='eur'>eur</option>
