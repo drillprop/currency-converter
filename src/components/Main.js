@@ -14,7 +14,6 @@ const StyledInput = styled.input`
   border: none;
   border-bottom: 1px solid black;
   font-family: ${sansSerif};
-  margin-left: 40px;
   width: 220px;
   height: 25px;
 `;

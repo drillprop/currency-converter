@@ -7,13 +7,9 @@ const Title = styled.h1`
   font-size: 50px;
   font-family: ${serif};
   font-weight: 800;
-  span {
-    margin-left: 40px;
-  }
 `;
 const SubTitle = styled.h3`
   margin-top: 100px;
-  margin-left: 40px;
   font-size: 20px;
   font-family: ${sansSerif};
   text-transform: uppercase;
