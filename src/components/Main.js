@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Currency from './Currency';
 import Heading from './Heading';
 import { sansSerif } from '../utilities/fonts';
+import Aside from './Aside';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -45,16 +46,19 @@ class Main extends Component {
   render() {
     const { amount, currency } = this.state;
     return (
-      <StyledMain>
-        <Heading />
-        <StyledInput type='number' onChange={this.getAmount} />
-        <StyledSelect onChange={this.getCurrency}>
-          <option value='usd'>usd</option>
-          <option value='eur'>eur</option>
-          <option value='czk'>czk</option>
-        </StyledSelect>
-        <Currency amount={amount} currency={currency} />
-      </StyledMain>
+      <>
+        <Aside currency={currency} />
+        <StyledMain>
+          <Heading />
+          <StyledInput type='number' onChange={this.getAmount} />
+          <StyledSelect onChange={this.getCurrency}>
+            <option value='usd'>usd</option>
+            <option value='eur'>eur</option>
+            <option value='czk'>czk</option>
+          </StyledSelect>
+          <Currency amount={amount} currency={currency} />
+        </StyledMain>
+      </>
     );
   }
 }
