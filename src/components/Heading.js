@@ -10,10 +10,9 @@ const Title = styled.h1`
   font-weight: 800;
 `;
 const SubTitle = styled.h3`
-  margin-top: 100px;
-  font-size: 20px;
+  margin-top: 20px;
+  font-size: 18px;
   font-family: ${sansSerif};
-  text-transform: uppercase;
   font-weight: 400;
   color: #555;
 `;
@@ -24,7 +23,7 @@ const Heading = ({ currency }) => (
       Currency <br />
       <span>Converter</span>
     </Title>
-    <SubTitle>Convert {currency} to PLN</SubTitle>
+    <SubTitle>Convert {currency.toUpperCase()} to PLN</SubTitle>
   </header>
 );
 
