@@ -11,31 +11,12 @@ const Container = styled.div`
 `;
 
 class App extends Component {
-  state = {
-    amount: 0,
-    currency: 'usd'
-  };
-
-  getAmount = e => {
-    this.setState({ amount: e.currentTarget.value });
-  };
-  getCurrency = e => {
-    this.setState({
-      currency: e.currentTarget.value
-    });
-  };
   render() {
-    const { amount, currency } = this.state;
     return (
       <Container>
         <GlobalStyle />
-        <Aside currency={currency} />
-        <Main
-          amount={amount}
-          currency={currency}
-          getAmount={this.getAmount}
-          getCurrency={this.getCurrency}
-        />
+        <Aside currency={'usd'} />
+        <Main />
       </Container>
     );
   }

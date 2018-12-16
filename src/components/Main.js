@@ -29,22 +29,31 @@ const StyledSelect = styled.select`
 `;
 
 class Main extends Component {
+  state = {
+    amount: 0,
+    currency: 'usd'
+  };
+
+  getAmount = e => {
+    this.setState({ amount: e.currentTarget.value });
+  };
+  getCurrency = e => {
+    this.setState({
+      currency: e.currentTarget.value
+    });
+  };
   render() {
-    const { amount, currency, getAmount, getCurrency } = this.props;
+    const { amount, currency } = this.state;
     return (
       <StyledMain>
         <Heading />
-        <StyledInput type='number' onChange={getAmount} />
-        <StyledSelect onChange={getCurrency}>
+        <StyledInput type='number' onChange={this.getAmount} />
+        <StyledSelect onChange={this.getCurrency}>
           <option value='usd'>usd</option>
           <option value='eur'>eur</option>
           <option value='czk'>czk</option>
         </StyledSelect>
-        <Currency amount={amount} currency={currency}>
-          {value => (
-            <div style={{ display: 'inline', color: '#666' }}>{value} pln</div>
-          )}
-        </Currency>
+        <Currency amount={amount} currency={currency} />
       </StyledMain>
     );
   }

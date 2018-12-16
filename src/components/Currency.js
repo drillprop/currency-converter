@@ -20,9 +20,10 @@ class Currency extends Component {
   };
 
   render() {
-    const { children, amount } = this.props;
+    const { amount } = this.props;
     const { rate } = this.state;
-    return children((amount * rate).toFixed(2));
+    const value = (amount * rate).toFixed(2);
+    return <div style={{ display: 'inline', color: '#666' }}>{value} pln</div>;
   }
 }
 
