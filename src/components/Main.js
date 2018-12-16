@@ -14,16 +14,14 @@ const StyledInput = styled.input`
   margin: 0;
   font-size: 16px;
   border: none;
-  border-bottom: 1px solid #666;
   font-family: ${sansSerif};
-  width: 220px;
+  width: 50px;
   height: 25px;
 `;
 const StyledSelect = styled.select`
   color: #666;
   margin: 0;
   border: none;
-  border-bottom: 1px solid #666;
   height: 28px;
   font-family: ${sansSerif};
   font-size: 16px;
@@ -49,8 +47,12 @@ class Main extends Component {
       <>
         <Aside currency={currency} />
         <StyledMain>
-          <Heading />
-          <StyledInput type='number' onChange={this.getAmount} />
+          <Heading currency={currency} />
+          <StyledInput
+            placeholder='0'
+            type='number'
+            onChange={this.getAmount}
+          />
           <StyledSelect onChange={this.getCurrency}>
             <option value='usd'>usd</option>
             <option value='eur'>eur</option>

@@ -18,13 +18,13 @@ const SubTitle = styled.h3`
   color: #555;
 `;
 
-const Heading = () => (
+const Heading = ({ currency }) => (
   <header>
     <Title>
       Currency <br />
       <span>Converter</span>
     </Title>
-    <SubTitle>Convert smth to smth</SubTitle>
+    <SubTitle>Convert {currency} to PLN</SubTitle>
   </header>
 );
 

@@ -23,7 +23,12 @@ class Currency extends Component {
     const { amount } = this.props;
     const { rate } = this.state;
     const value = (amount * rate).toFixed(2);
-    return <div style={{ display: 'inline', color: '#666' }}>{value} pln</div>;
+    return (
+      <div style={{ display: 'inline', color: '#666' }}>
+        {' '}
+        equals {value} pln
+      </div>
+    );
   }
 }
 
