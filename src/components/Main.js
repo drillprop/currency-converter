@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Currency from './Currency';
 import Heading from './Heading';
-import { serif, sansSerif } from '../utilities/fonts';
+import { sansSerif } from '../utilities/fonts';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -22,7 +22,7 @@ const StyledSelect = styled.select`
   margin: 0;
   border: none;
   border-bottom: 1px solid black;
-  height: 27px;
+  height: 28px;
   font-family: ${sansSerif};
   font-size: 16px;
 `;
