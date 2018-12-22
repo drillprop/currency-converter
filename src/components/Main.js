@@ -23,7 +23,7 @@ const StyledSelect = styled.select`
   color: #666;
   margin: 0;
   border: none;
-  height: 28px;
+  height: 34px;
   font-family: ${sansSerif};
   font-size: 16px;
 `;
