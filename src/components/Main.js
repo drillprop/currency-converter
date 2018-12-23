@@ -56,6 +56,9 @@ class Main extends Component {
       currency: e.currentTarget.value
     });
   };
+  swapCurrency = () => {
+    console.log('swap');
+  };
   render() {
     const { amount, currency } = this.state;
     return (
@@ -75,7 +78,7 @@ class Main extends Component {
             <option value='czk'>czk</option>
           </StyledSelect>
           <Currency amount={amount} currency={currency} />
-          <SwapButton />
+          <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
       </>
     );

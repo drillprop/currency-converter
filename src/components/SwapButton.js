@@ -14,6 +14,11 @@ const Button = styled.button`
   color: white;
 `;
 
-const SwapButton = () => <Button>Swap</Button>;
+class SwapButton extends React.Component {
+  render() {
+    const { swapCurrency } = this.props;
+    return <Button onClick={swapCurrency}>Swap</Button>;
+  }
+}
 
 export default SwapButton;
