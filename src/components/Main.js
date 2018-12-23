@@ -4,6 +4,7 @@ import Currency from './Currency';
 import Heading from './Heading';
 import { sansSerif } from '../utilities/fonts';
 import Aside from './Aside';
+import SwapButton from './SwapButton';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -74,6 +75,7 @@ class Main extends Component {
             <option value='czk'>czk</option>
           </StyledSelect>
           <Currency amount={amount} currency={currency} />
+          <SwapButton />
         </StyledMain>
       </>
     );
