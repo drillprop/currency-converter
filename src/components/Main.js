@@ -32,14 +32,14 @@ const StyledSelect = styled.select`
 class Main extends Component {
   state = {
     amount: 0,
-    currency: 'usd'
+    currency: 'usd',
+    swapToPln: false
   };
 
   getAmount = e => {
     const { currentTarget } = e;
     const amount = currentTarget.value;
     const { length } = amount.toString();
-    console.log(e.currentTarget);
     if (+amount) {
       this.setState({ amount });
     } else {
@@ -56,28 +56,44 @@ class Main extends Component {
       currency: e.currentTarget.value
     });
   };
+
   swapCurrency = () => {
-    console.log('swap');
+    this.setState(state => {
+      return { swapToPln: !state.swapToPln };
+    });
   };
   render() {
-    const { amount, currency } = this.state;
+    const { amount, currency, swapToPln } = this.state;
     return (
       <>
         <Aside currency={currency} />
         <StyledMain>
           <Heading currency={currency} />
-          <StyledInput
-            placeholder='0'
-            type='text'
-            onChange={this.getAmount}
-            maxLength={15}
-          />
-          <StyledSelect onChange={this.getCurrency}>
-            <option value='usd'>usd</option>
-            <option value='eur'>eur</option>
-            <option value='czk'>czk</option>
-          </StyledSelect>
-          <Currency amount={amount} currency={currency} />
+
+          {!swapToPln ? (
+            <>
+              <StyledInput
+                placeholder='0'
+                type='text'
+                onChange={this.getAmount}
+                maxLength={15}
+              />
+              <StyledSelect onChange={this.getCurrency}>
+                <option value='usd'>usd</option>
+                <option value='eur'>eur</option>
+                <option value='czk'>czk</option>
+              </StyledSelect>
+              <Currency amount={amount} currency={currency}>
+                {amount => (
+                  <div style={{ display: 'inline', color: '#666' }}>
+                    equals {amount} pln
+                  </div>
+                )}
+              </Currency>
+            </>
+          ) : (
+            <div>change to pln</div>
+          )}
           <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
       </>
