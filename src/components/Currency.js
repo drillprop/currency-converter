@@ -2,21 +2,31 @@ import React, { Component } from 'react';
 
 class Currency extends Component {
   state = {
-    rate: 1
+    rate: 0
   };
   static defaultProps = {
     currency: 'usd'
   };
+
+  componentDidMount = async () => {
+    this.fetchRates();
+  };
+
   componentDidUpdate = async prevProps => {
-    if (prevProps !== this.props) {
-      const { currency } = this.props;
-      const url = await fetch(
-        `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
-      );
-      const json = await url.json();
-      const rate = await json.rates[0].mid;
-      this.setState({ rate });
+    const { currency } = this.props;
+    if (prevProps.currency !== currency) {
+      this.fetchRates();
     }
+  };
+
+  fetchRates = async () => {
+    const { currency } = this.props;
+    const url = await fetch(
+      `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
+    );
+    const json = await url.json();
+    const rate = await json.rates[0].mid;
+    this.setState({ rate });
   };
 
   render() {
