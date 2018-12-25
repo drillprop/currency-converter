@@ -5,6 +5,7 @@ import Heading from './Heading';
 import { sansSerif } from '../utilities/fonts';
 import Aside from './Aside';
 import SwapButton from './SwapButton';
+import Select from './Select';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -19,14 +20,6 @@ const StyledInput = styled.input`
   font-family: ${sansSerif};
   width: 50px;
   height: 25px;
-`;
-const StyledSelect = styled.select`
-  color: #666;
-  margin: 0;
-  border: none;
-  height: 34px;
-  font-family: ${sansSerif};
-  font-size: 16px;
 `;
 
 class Main extends Component {
@@ -62,6 +55,7 @@ class Main extends Component {
       return { swapToPln: !state.swapToPln };
     });
   };
+
   render() {
     const { amount, currency, swapToPln } = this.state;
     return (
@@ -69,30 +63,31 @@ class Main extends Component {
         <Aside currency={currency} />
         <StyledMain>
           <Heading currency={currency} />
-
+          <StyledInput
+            placeholder='0'
+            type='text'
+            onChange={this.getAmount}
+            maxLength={15}
+          />
           {!swapToPln ? (
             <>
-              <StyledInput
-                placeholder='0'
-                type='text'
-                onChange={this.getAmount}
-                maxLength={15}
-              />
-              <StyledSelect onChange={this.getCurrency}>
-                <option value='usd'>usd</option>
-                <option value='eur'>eur</option>
-                <option value='czk'>czk</option>
-              </StyledSelect>
+              <Select getCurrency={this.getCurrency} />
               <Currency amount={amount} currency={currency}>
-                {amount => (
+                {value => (
                   <div style={{ display: 'inline', color: '#666' }}>
-                    equals {amount} pln
+                    equals {value} pln
                   </div>
                 )}
               </Currency>
             </>
           ) : (
-            <div>change to pln</div>
+            <Currency amount={amount} currency={currency}>
+              {value => (
+                <div style={{ display: 'inline', color: '#666' }}>
+                  equals {value}
+                </div>
+              )}
+            </Currency>
           )}
           <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
