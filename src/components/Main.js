@@ -6,6 +6,7 @@ import { sansSerif } from '../utilities/fonts';
 import Aside from './Aside';
 import SwapButton from './SwapButton';
 import ForeignCurrency from './ForeignCurrency';
+import PlnCurrency from './PlnCurrency';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -76,13 +77,7 @@ class Main extends Component {
               currency={currency}
             />
           ) : (
-            <Currency amount={amount} currency={currency}>
-              {value => (
-                <div style={{ display: 'inline', color: '#666' }}>
-                  equals {value}
-                </div>
-              )}
-            </Currency>
+            <PlnCurrency amount={amount} currency={currency} />
           )}
           <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
