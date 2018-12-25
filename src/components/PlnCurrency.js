@@ -2,11 +2,11 @@ import React from 'react';
 import Select from './Select';
 import Currency from './Currency';
 
-const PlnCurrency = ({ amount, currency, getCurrency }) => (
+const PlnCurrency = ({ amount, currency, children }) => (
   <Currency pln amount={amount} currency={currency}>
     {value => (
       <div style={{ display: 'inline', color: '#666' }}>
-        PLN equals {value} <Select getCurrency={getCurrency} />
+        PLN equals {value} {children}
       </div>
     )}
   </Currency>

@@ -7,6 +7,7 @@ import Aside from './Aside';
 import SwapButton from './SwapButton';
 import ForeignCurrency from './ForeignCurrency';
 import PlnCurrency from './PlnCurrency';
+import Select from './Select';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -67,17 +68,13 @@ class Main extends Component {
             maxLength={15}
           />
           {!swapToPln ? (
-            <ForeignCurrency
-              getCurrency={this.getCurrency}
-              amount={amount}
-              currency={currency}
-            />
+            <ForeignCurrency amount={amount} currency={currency}>
+              <Select getCurrency={this.getCurrency} />
+            </ForeignCurrency>
           ) : (
-            <PlnCurrency
-              getCurrency={this.getCurrency}
-              amount={amount}
-              currency={currency}
-            />
+            <PlnCurrency amount={amount} currency={currency}>
+              <Select getCurrency={this.getCurrency} />
+            </PlnCurrency>
           )}
           <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
