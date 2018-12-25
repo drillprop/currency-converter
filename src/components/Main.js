@@ -5,7 +5,7 @@ import Heading from './Heading';
 import { sansSerif } from '../utilities/fonts';
 import Aside from './Aside';
 import SwapButton from './SwapButton';
-import Select from './Select';
+import ForeignCurrency from './ForeignCurrency';
 
 const StyledMain = styled.main`
   margin-top: 50px;
@@ -70,16 +70,11 @@ class Main extends Component {
             maxLength={15}
           />
           {!swapToPln ? (
-            <>
-              <Select getCurrency={this.getCurrency} />
-              <Currency amount={amount} currency={currency}>
-                {value => (
-                  <div style={{ display: 'inline', color: '#666' }}>
-                    equals {value} pln
-                  </div>
-                )}
-              </Currency>
-            </>
+            <ForeignCurrency
+              getCurrency={this.getCurrency}
+              amount={amount}
+              currency={currency}
+            />
           ) : (
             <Currency amount={amount} currency={currency}>
               {value => (
