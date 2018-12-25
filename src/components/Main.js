@@ -73,7 +73,11 @@ class Main extends Component {
               currency={currency}
             />
           ) : (
-            <PlnCurrency amount={amount} currency={currency} />
+            <PlnCurrency
+              getCurrency={this.getCurrency}
+              amount={amount}
+              currency={currency}
+            />
           )}
           <SwapButton swapCurrency={this.swapCurrency} />
         </StyledMain>
