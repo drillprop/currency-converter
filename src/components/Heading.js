@@ -17,13 +17,17 @@ const SubTitle = styled.h3`
   color: #555;
 `;
 
-const Heading = ({ currency }) => (
+const Heading = ({ currency, pln }) => (
   <header>
     <Title>
       Currency <br />
       <span>Converter</span>
     </Title>
-    <SubTitle>Convert {currency.toUpperCase()} to PLN</SubTitle>
+    {pln ? (
+      <SubTitle>Convert PLN to {currency.toUpperCase()} </SubTitle>
+    ) : (
+      <SubTitle>Convert {currency.toUpperCase()} to PLN</SubTitle>
+    )}
   </header>
 );
 
