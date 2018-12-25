@@ -45,17 +45,13 @@ class Main extends Component {
     }
   };
 
-  getCurrency = e => {
-    this.setState({
-      currency: e.currentTarget.value
-    });
-  };
+  getCurrency = ({ currentTarget }) =>
+    this.setState({ currency: currentTarget.value });
 
-  swapCurrency = () => {
+  swapCurrency = () =>
     this.setState(state => {
       return { swapToPln: !state.swapToPln };
     });
-  };
 
   render() {
     const { amount, currency, swapToPln } = this.state;
