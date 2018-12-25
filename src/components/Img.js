@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import usd from '../assets/usd.jpg';
 import eur from '../assets/eur.jpg';
 import czk from '../assets/czk.jpg';
+import { Transition } from 'react-spring';
+import { isAbsolute } from 'path';
 
 const Image = styled.img`
   display: block;
@@ -12,15 +14,44 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Img = ({ currency }) => {
-  switch (currency) {
-    case 'usd':
-      return <Image src={usd} />;
-    case 'eur':
-      return <Image src={eur} />;
-    case 'czk':
-      return <Image src={czk} />;
-  }
-};
+const images = [
+  style => <Image style={{ ...style }} src={usd} />,
+  style => <Image style={{ ...style }} src={eur} />,
+  style => <Image style={{ ...style }} src={czk} />
+];
 
-export default Img;
+export default class Img extends React.PureComponent {
+  state = { index: 0 };
+  componentDidUpdate = (prevProps, prevState) => {
+    const { currency } = this.props;
+    if (prevProps.currency !== currency) {
+      this.setIndex();
+    }
+  };
+
+  setIndex = () => {
+    const { currency } = this.props;
+    switch (currency) {
+      case 'usd':
+        this.setState({ index: 0 });
+        break;
+      case 'eur':
+        this.setState({ index: 1 });
+        break;
+      case 'czk':
+        this.setState({ index: 2 });
+        break;
+    }
+  };
+  render() {
+    return (
+      <Transition
+        items={this.state.index}
+        from={{ position: 'relative', opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ display: 'none', opacity: 0 }}>
+        {index => images[index]}
+      </Transition>
+    );
+  }
+}
