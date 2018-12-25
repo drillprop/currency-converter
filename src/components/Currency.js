@@ -30,9 +30,9 @@ class Currency extends Component {
   };
 
   render() {
-    const { amount, children, currency } = this.props;
+    const { amount, children, currency, pln } = this.props;
     const { rate } = this.state;
-    const value = (amount * rate).toFixed(2);
+    const value = pln ? (amount / rate).toFixed(2) : (amount * rate).toFixed(2);
     return children(value, currency);
   }
 }
