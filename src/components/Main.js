@@ -46,8 +46,10 @@ class Main extends Component {
     }
   };
 
-  getCurrency = ({ currentTarget }) =>
+  getCurrency = ({ currentTarget }) => {
+    console.log(currentTarget.value);
     this.setState({ currency: currentTarget.value });
+  };
 
   swapCurrency = () =>
     this.setState(state => {
@@ -69,11 +71,11 @@ class Main extends Component {
           />
           {!swapToPln ? (
             <ForeignCurrency amount={amount} currency={currency}>
-              <Select getCurrency={this.getCurrency} />
+              <Select getCurrency={this.getCurrency} currency={currency} />
             </ForeignCurrency>
           ) : (
             <PlnCurrency amount={amount} currency={currency}>
-              <Select getCurrency={this.getCurrency} />
+              <Select getCurrency={this.getCurrency} currency={currency} />
             </PlnCurrency>
           )}
           <SwapButton swapCurrency={this.swapCurrency} />

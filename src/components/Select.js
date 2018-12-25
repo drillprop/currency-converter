@@ -13,9 +13,9 @@ const StyledSelect = styled.select`
 
 class Select extends Component {
   render() {
-    const { getCurrency } = this.props;
+    const { getCurrency, currency } = this.props;
     return (
-      <StyledSelect onChange={getCurrency}>
+      <StyledSelect defaultValue={currency} onChange={getCurrency}>
         <option value='usd'>usd</option>
         <option value='eur'>eur</option>
         <option value='czk'>czk</option>
