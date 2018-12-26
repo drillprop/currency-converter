@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import usd from '../assets/usd.jpg';
 import eur from '../assets/eur.jpg';
 import czk from '../assets/czk.jpg';
-import { Transition } from 'react-spring';
-import { isAbsolute } from 'path';
+import { Transition, animated } from 'react-spring';
 
-const Image = styled.img`
+const Image = styled(animated.img)`
   display: block;
   margin: 0;
   max-width: 100%;
@@ -46,6 +45,7 @@ export default class Img extends React.PureComponent {
   render() {
     return (
       <Transition
+        native
         items={this.state.index}
         from={{ position: 'relative', opacity: 0 }}
         enter={{ opacity: 1 }}
