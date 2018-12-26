@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from './Select';
 import Currency from './Currency';
 
 const PlnCurrency = ({ amount, currency, children }) => (
