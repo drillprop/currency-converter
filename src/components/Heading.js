@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { serif, sansSerif } from '../utilities/fonts';
+import SubTitlePLN from './SubTitlePLN';
+import SubTitleForeign from './SubTitleForeign';
 
 const Title = styled.h1`
   color: #444;
@@ -9,7 +11,7 @@ const Title = styled.h1`
   font-family: ${serif};
   font-weight: 800;
 `;
-const SubTitle = styled.h3`
+export const SubTitle = styled.h3`
   margin-top: 20px;
   font-size: 18px;
   font-family: ${sansSerif};
@@ -24,9 +26,9 @@ const Heading = ({ currency, pln }) => (
       <span>Converter</span>
     </Title>
     {pln ? (
-      <SubTitle>Convert PLN to {currency.toUpperCase()} </SubTitle>
+      <SubTitlePLN currency={currency} />
     ) : (
-      <SubTitle>Convert {currency.toUpperCase()} to PLN</SubTitle>
+      <SubTitleForeign currency={currency} />
     )}
   </header>
 );
