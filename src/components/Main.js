@@ -9,8 +9,8 @@ import PlnCurrency from './PlnCurrency';
 import Select from './Select';
 
 const StyledMain = styled.main`
-  margin-top: 50px;
-  margin-left: 100px;
+  margin-top: 100px;
+  margin-left: 150px;
 `;
 const StyledInput = styled.input`
   color: #666;
