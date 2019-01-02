@@ -6,7 +6,7 @@ import GlobalStyle from '../utilities/GlobalStyle';
 const Container = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 0.5fr;
 `;
 
 class App extends Component {
