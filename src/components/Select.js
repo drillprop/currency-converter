@@ -9,6 +9,9 @@ const StyledSelect = styled.select`
   height: 34px;
   font-family: ${sansSerif};
   font-size: 16px;
+  option {
+    text-transform: uppercase;
+  }
 `;
 
 class Select extends Component {
@@ -16,9 +19,9 @@ class Select extends Component {
     const { getCurrency, currency } = this.props;
     return (
       <StyledSelect defaultValue={currency} onChange={getCurrency}>
-        <option value='usd'>usd</option>
-        <option value='eur'>eur</option>
-        <option value='czk'>czk</option>
+        <option value='usd'>USD</option>
+        <option value='eur'>EUR</option>
+        <option value='czk'>CZK</option>
       </StyledSelect>
     );
   }
