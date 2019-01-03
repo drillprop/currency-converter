@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
+import Currency from './Currency';
+
+const currencies = ['usd', 'eur', 'czk'];
 
 class RatesTable extends Component {
   render() {
     return (
       <table>
         <tbody>
-          <tr>
-            <td>USD</td>
-            <td>3.72</td>
-          </tr>
-          <tr>
-            <td>EUR</td>
-            <td>4.12</td>
-          </tr>
-          <tr>
-            <td>CZK</td>
-            <td>2.32</td>
-          </tr>
+          {currencies.map(currency => (
+            <Currency key={currency} amount={1} currency={currency}>
+              {rate => (
+                <tr>
+                  <td>{currency}</td>
+                  <td>{rate}</td>
+                </tr>
+              )}
+            </Currency>
+          ))}
         </tbody>
       </table>
     );
