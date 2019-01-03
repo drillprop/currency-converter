@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Route, Link, Switch } from 'react-router-dom';
+import Home from './Home';
+import RatesTable from './RatesTable';
 
 const Nav = styled.nav`
   color: #444;
@@ -26,16 +29,24 @@ const Li = styled.li`
 `;
 
 const Navigation = () => (
-  <Nav>
-    <Ul>
-      <Li>
-        <a href=''>Current exchange Rates</a>
-      </Li>
-      <Li>
-        <a href=''>Rates from last 7 days</a>
-      </Li>
-    </Ul>
-  </Nav>
+  <>
+    <Nav>
+      <Ul>
+        <Li>
+          <Link to='/rates'>Current exchange Rates</Link>
+        </Li>
+        <Li>
+          <a href=''>Rates from last 7 days</a>
+        </Li>
+      </Ul>
+    </Nav>
+    <>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/rates' component={RatesTable} />
+      </Switch>
+    </>
+  </>
 );
 
 export default Navigation;
