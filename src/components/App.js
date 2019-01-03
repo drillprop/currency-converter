@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 const Container = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 0.5fr;
+  grid-template-columns: 0.75fr 1fr 0.5fr;
 `;
 
 class App extends Component {

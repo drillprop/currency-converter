@@ -6,7 +6,7 @@ const Nav = styled.nav`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-right: 50px;
   text-transform: uppercase;
 `;
