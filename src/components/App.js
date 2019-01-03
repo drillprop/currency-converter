@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Main from './Main';
 import GlobalStyle from '../utilities/GlobalStyle';
+import Navigation from './Navigation';
 
 const Container = styled.div`
   height: 100vh;
@@ -12,10 +13,13 @@ const Container = styled.div`
 class App extends Component {
   render() {
     return (
-      <Container>
-        <GlobalStyle />
-        <Main />
-      </Container>
+      <>
+        <Navigation />
+        <Container>
+          <GlobalStyle />
+          <Main />
+        </Container>
+      </>
     );
   }
 }
