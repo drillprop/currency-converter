@@ -37,8 +37,11 @@ class Main extends Component {
     if (+amount) {
       this.setState({ amount });
     } else {
-      e.currentTarget.value = '';
-      this.setState({ amount: 0 });
+      let noLetter = [...amount];
+      noLetter.pop();
+      noLetter = noLetter.join('');
+      e.currentTarget.value = noLetter;
+      this.setState({ amount: noLetter });
     }
     if (length >= 5) {
       e.currentTarget.style.width = `${length * 9}px`;
