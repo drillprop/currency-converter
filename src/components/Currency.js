@@ -43,7 +43,7 @@ class Currency extends Component {
         : (amount * rate).toFixed(2);
       return children(value, currency);
     } else {
-      return children(<Loading />, currency);
+      return children(amount ? <Loading /> : '0.00', currency);
     }
   }
 }
