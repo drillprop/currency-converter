@@ -21,7 +21,7 @@ const images = [
 
 export default class Img extends React.PureComponent {
   state = { index: 0 };
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = prevProps => {
     const { currency } = this.props;
     if (prevProps.currency !== currency) {
       this.setIndex();
