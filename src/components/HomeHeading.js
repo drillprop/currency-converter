@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import SubTitlePLN from './SubTitlePLN';
 import SubTitleForeign from './SubTitleForeign';
 import { Title } from '../elements/Titles';
 
-const HomeHeading = ({ currency, pln }) => (
+const HomeHeading = memo(({ currency, pln }) => (
   <header>
     <Title>
       Currency <br />
@@ -15,6 +15,6 @@ const HomeHeading = ({ currency, pln }) => (
       <SubTitleForeign currency={currency} />
     )}
   </header>
-);
+));
 
 export default HomeHeading;
