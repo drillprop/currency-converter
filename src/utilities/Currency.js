@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Loading from '../elements/Loading';
 
-class Currency extends Component {
+class Currency extends PureComponent {
   state = {
     rate: 0
   };
