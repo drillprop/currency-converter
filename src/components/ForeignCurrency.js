@@ -1,5 +1,5 @@
 import React from 'react';
-import Currency from './Currency';
+import Currency from '../utilities/Currency';
 
 const ForeignCurrency = ({ amount, currency, children }) => (
   <>

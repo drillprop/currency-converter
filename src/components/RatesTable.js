@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Currency from './Currency';
+import Currency from '../utilities/Currency';
 
 const currencies = ['usd', 'eur', 'czk'];
 
