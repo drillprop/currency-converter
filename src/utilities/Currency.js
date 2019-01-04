@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loading from '../components/Loading';
+import Loading from '../elements/Loading';
 
 class Currency extends Component {
   state = {
