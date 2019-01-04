@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Heading from './Heading';
+import HeadingForHome from './HeadingForHome';
 import { sansSerif } from '../utilities/fonts';
 import Aside from './Aside';
 import SwapButton from './SwapButton';
@@ -64,7 +64,7 @@ class Main extends Component {
       <>
         <Aside currency={currency} />
         <StyledMain>
-          <Heading currency={currency} pln={swapToPln} />
+          <HeadingForHome currency={currency} pln={swapToPln} />
           <StyledInput
             placeholder='0'
             type='text'

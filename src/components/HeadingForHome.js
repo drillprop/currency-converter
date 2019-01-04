@@ -3,7 +3,7 @@ import SubTitlePLN from './SubTitlePLN';
 import SubTitleForeign from './SubTitleForeign';
 import { Title } from '../elements/Titles';
 
-const Heading = ({ currency, pln }) => (
+const HeadingForHome = ({ currency, pln }) => (
   <header>
     <Title>
       Currency <br />
@@ -17,4 +17,4 @@ const Heading = ({ currency, pln }) => (
   </header>
 );
 
-export default Heading;
+export default HeadingForHome;
