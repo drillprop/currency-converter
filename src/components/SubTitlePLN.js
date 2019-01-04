@@ -1,6 +1,6 @@
 import React from 'react';
-import { SubTitle } from './Heading';
 import { Spring } from 'react-spring';
+import { SubTitle } from '../elements/Titles';
 
 const SubTitlePLN = ({ currency }) => (
   <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>

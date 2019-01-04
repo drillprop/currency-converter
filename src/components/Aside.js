@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from './Img';
+import Img from '../elements/Img';
 const StyledAside = styled.aside``;
 import { Spring } from 'react-spring';
 

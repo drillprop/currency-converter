@@ -1,23 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { serif, sansSerif } from '../utilities/fonts';
 import SubTitlePLN from './SubTitlePLN';
 import SubTitleForeign from './SubTitleForeign';
-
-const Title = styled.h1`
-  color: #444;
-  margin-top: 0;
-  font-size: 60px;
-  font-family: ${serif};
-  font-weight: 800;
-`;
-export const SubTitle = styled.h3`
-  margin-top: 20px;
-  font-size: 25px;
-  font-family: ${sansSerif};
-  font-weight: 400;
-  color: #555;
-`;
+import { Title } from '../elements/Titles';
 
 const Heading = ({ currency, pln }) => (
   <header>
