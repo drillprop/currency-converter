@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Route, Link, Switch } from 'react-router-dom';
-import Home from './Home';
-import RatesTable from './RatesTable';
+import HomeContainer from './HomeContainer';
+import RatesContainer from './RatesContainer';
 
 const Nav = styled.nav`
   color: #444;
@@ -42,8 +42,8 @@ const Navigation = () => (
     </Nav>
     <>
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/rates' component={RatesTable} />
+        <Route exact path='/' component={HomeContainer} />
+        <Route path='/rates' component={RatesContainer} />
       </Switch>
     </>
   </>
