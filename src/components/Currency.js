@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from './Loading';
 
 class Currency extends Component {
   state = {
@@ -21,12 +22,16 @@ class Currency extends Component {
 
   fetchRates = async () => {
     const { currency } = this.props;
-    const url = await fetch(
-      `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
-    );
-    const json = await url.json();
-    const rate = await json.rates[0].mid;
-    this.setState({ rate });
+    try {
+      const url = await fetch(
+        `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
+      );
+      const json = await url.json();
+      const rate = await json.rates[0].mid;
+      this.setState({ rate });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -38,7 +43,7 @@ class Currency extends Component {
         : (amount * rate).toFixed(2);
       return children(value, currency);
     } else {
-      return null;
+      return children(<Loading />, currency);
     }
   }
 }
