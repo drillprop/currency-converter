@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Currency from '../utilities/Currency';
 
-const ForeignCurrency = ({ amount, currency, children }) => (
+const ForeignCurrency = memo(({ amount, currency, children }) => (
   <>
     <Currency amount={amount} currency={currency}>
       {value => (
@@ -14,6 +14,6 @@ const ForeignCurrency = ({ amount, currency, children }) => (
       )}
     </Currency>
   </>
-);
+));
 
 export default ForeignCurrency;

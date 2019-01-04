@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Currency from '../utilities/Currency';
 
-const PlnCurrency = ({ amount, currency, children }) => (
+const PlnCurrency = memo(({ amount, currency, children }) => (
   <Currency pln amount={amount} currency={currency}>
     {value => (
       <div style={{ display: 'inline', color: '#666' }}>
@@ -9,6 +9,6 @@ const PlnCurrency = ({ amount, currency, children }) => (
       </div>
     )}
   </Currency>
-);
+));
 
 export default PlnCurrency;
