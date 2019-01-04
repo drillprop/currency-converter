@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Currency from '../utilities/Currency';
 
 const currencies = ['usd', 'eur', 'czk'];
 
-const RatesTable = () => (
+const RatesTable = memo(() => (
   <table>
     <tbody>
       {currencies.map(currency => (
@@ -18,6 +18,6 @@ const RatesTable = () => (
       ))}
     </tbody>
   </table>
-);
+));
 
 export default RatesTable;
