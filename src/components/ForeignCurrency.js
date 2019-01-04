@@ -8,7 +8,7 @@ const ForeignCurrency = ({ amount, currency, children }) => (
         <>
           {children}
           <div style={{ display: 'inline', color: '#666' }}>
-            equals {value} pln
+            equals {value} PLN
           </div>
         </>
       )}
