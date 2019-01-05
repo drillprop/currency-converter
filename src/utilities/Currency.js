@@ -6,13 +6,13 @@ class Currency extends PureComponent {
   static propTypes = {
     currency: PropTypes.string
   };
-  state = {
-    rate: 0
-  };
   static defaultProps = {
     currency: 'usd'
   };
-
+  state = {
+    rate: 0,
+    error: false
+  };
   componentDidMount = async () => {
     this.fetchRates();
   };
@@ -35,12 +35,16 @@ class Currency extends PureComponent {
       this.setState({ rate });
     } catch (error) {
       console.log(error);
+      this.setState({ error });
     }
   };
 
   render() {
     const { amount, children, currency, pln } = this.props;
-    const { rate } = this.state;
+    const { rate, error } = this.state;
+    if (error) {
+      return children("Couldn't fetch a data");
+    }
     if (rate) {
       const value = pln
         ? (Number(amount) / rate).toFixed(2)
