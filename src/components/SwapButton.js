@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { sansSerif } from '../utilities/fonts';
 
@@ -14,11 +14,8 @@ const Button = styled.button`
   color: white;
 `;
 
-class SwapButton extends React.Component {
-  render() {
-    const { swapCurrency } = this.props;
-    return <Button onClick={swapCurrency}>Swap</Button>;
-  }
-}
+const SwapButton = memo(({ swapCurrency }) => (
+  <Button onClick={swapCurrency}>Swap</Button>
+));
 
 export default SwapButton;
