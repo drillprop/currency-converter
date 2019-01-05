@@ -46,7 +46,6 @@ class Home extends Component {
   };
 
   getCurrency = ({ currentTarget }) => {
-    console.log(currentTarget.value);
     this.setState({ currency: currentTarget.value });
   };
 
