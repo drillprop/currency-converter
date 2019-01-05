@@ -22,7 +22,7 @@ const StyledInput = styled.input`
 
 class Home extends Component {
   state = {
-    amount: 0,
+    amount: '0',
     currency: 'usd',
     swapToPln: false
   };

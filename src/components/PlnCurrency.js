@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import Currency from '../utilities/Currency';
+import PropTypes from 'prop-types';
 
 const PlnCurrency = memo(({ amount, currency, children }) => (
   <Currency pln amount={amount} currency={currency}>
@@ -10,5 +11,11 @@ const PlnCurrency = memo(({ amount, currency, children }) => (
     )}
   </Currency>
 ));
+
+PlnCurrency.propTypes = {
+  amount: PropTypes.string,
+  currency: PropTypes.string,
+  children: PropTypes.object
+};
 
 export default PlnCurrency;

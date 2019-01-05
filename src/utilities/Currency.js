@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import Loading from '../elements/Loading';
+import PropTypes from 'prop-types';
 
 class Currency extends PureComponent {
+  static propTypes = {
+    currency: PropTypes.string
+  };
   state = {
     rate: 0
   };

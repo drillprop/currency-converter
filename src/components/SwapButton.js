@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import { sansSerif } from '../utilities/fonts';
+import PropTypes from 'prop-types';
 
 const Button = styled.button`
   align-self: center;
@@ -17,5 +18,9 @@ const Button = styled.button`
 const SwapButton = memo(({ swapCurrency }) => (
   <Button onClick={swapCurrency}>Swap</Button>
 ));
+
+SwapButton.propTypes = {
+  swapCurrency: PropTypes.func
+};
 
 export default SwapButton;

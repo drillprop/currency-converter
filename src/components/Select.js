@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { sansSerif } from '../utilities/fonts';
+import PropTypes from 'prop-types';
 
 const StyledSelect = styled.select`
   color: #666;
@@ -14,17 +15,17 @@ const StyledSelect = styled.select`
   }
 `;
 
-class Select extends Component {
-  render() {
-    const { getCurrency, currency } = this.props;
-    return (
-      <StyledSelect defaultValue={currency} onChange={getCurrency}>
-        <option value='usd'>USD</option>
-        <option value='eur'>EUR</option>
-        <option value='czk'>CZK</option>
-      </StyledSelect>
-    );
-  }
-}
+const Select = memo(({ getCurrency, currency }) => (
+  <StyledSelect defaultValue={currency} onChange={getCurrency}>
+    <option value='usd'>USD</option>
+    <option value='eur'>EUR</option>
+    <option value='czk'>CZK</option>
+  </StyledSelect>
+));
+
+Select.propTypes = {
+  getCurrency: PropTypes.func,
+  currency: PropTypes.string
+};
 
 export default Select;

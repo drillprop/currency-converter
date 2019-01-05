@@ -4,6 +4,7 @@ import usd from '../assets/usd.jpg';
 import eur from '../assets/eur.jpg';
 import czk from '../assets/czk.jpg';
 import { Transition, animated } from 'react-spring';
+import PropTypes from 'prop-types';
 
 const Image = styled(animated.img)`
   display: block;
@@ -20,6 +21,10 @@ const images = [
 ];
 
 export default class Img extends React.PureComponent {
+  static propTypes = {
+    currency: PropTypes.string
+  };
+
   state = { index: 0 };
   componentDidUpdate = prevProps => {
     const { currency } = this.props;

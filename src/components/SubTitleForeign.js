@@ -1,6 +1,7 @@
 import React from 'react';
 import { Spring } from 'react-spring';
 import { SubTitle } from '../elements/Titles';
+import PropTypes from 'prop-types';
 
 const SubTitleForeign = ({ currency }) => (
   <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
@@ -9,5 +10,8 @@ const SubTitleForeign = ({ currency }) => (
     )}
   </Spring>
 );
+SubTitleForeign.propTypes = {
+  currency: PropTypes.string
+};
 
 export default SubTitleForeign;
