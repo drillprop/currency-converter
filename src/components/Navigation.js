@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
-import RatesContainer from './RatesContainer';
+import Loading from '../elements/Loading';
+// import RatesContainer from './RatesContainer';
+
+const RatesContainer = lazy(() => import('./RatesContainer'));
 
 const Nav = styled.nav`
   color: #444;
@@ -30,22 +33,27 @@ const Li = styled.li`
 
 const Navigation = () => (
   <>
-    <Nav>
-      <Ul>
-        <Li>
-          <Link to='/rates'>Current exchange Rates</Link>
-        </Li>
-        <Li>
-          <a href=''>Rates from last 7 days</a>
-        </Li>
-      </Ul>
-    </Nav>
-    <>
-      <Switch>
-        <Route exact path='/' component={HomeContainer} />
-        <Route path='/rates' component={RatesContainer} />
-      </Switch>
-    </>
+    <Suspense fallback={<Loading />}>
+      <Nav>
+        <Ul>
+          <Li>
+            <Link to='/rates'>Current exchange Rates</Link>
+          </Li>
+          <Li>
+            <a href=''>Rates from last 7 days</a>
+          </Li>
+        </Ul>
+      </Nav>
+      <>
+        <Switch>
+          <Route exact path='/' component={HomeContainer} />
+          <Route
+            path='/rates'
+            component={props => <RatesContainer {...props} />}
+          />
+        </Switch>
+      </>
+    </Suspense>
   </>
 );
 
