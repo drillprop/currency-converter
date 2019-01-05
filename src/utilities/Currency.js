@@ -43,8 +43,8 @@ class Currency extends PureComponent {
     const { rate } = this.state;
     if (rate) {
       const value = pln
-        ? (amount / rate).toFixed(2)
-        : (amount * rate).toFixed(2);
+        ? (Number(amount) / rate).toFixed(2)
+        : (Number(amount) * rate).toFixed(2);
       return children(value, currency);
     } else {
       return children(amount ? <Loading /> : '0.00', currency);
