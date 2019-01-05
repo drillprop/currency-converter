@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
 import Loading from '../elements/Loading';
-// import RatesContainer from './RatesContainer';
+import PropTypes from 'prop-types';
 
 const RatesContainer = lazy(() => import('./RatesContainer'));
 
@@ -31,13 +31,17 @@ const Li = styled.li`
   }
 `;
 
-const Navigation = () => (
+const Navigation = withRouter(({ location }) => (
   <>
     <Suspense fallback={<Loading />}>
       <Nav>
         <Ul>
           <Li>
-            <Link to='/rates'>Current exchange Rates</Link>
+            {location.pathname === '/' ? (
+              <Link to='/rates'>Current exchange Rates</Link>
+            ) : (
+              <Link to='/'>Back to Converter</Link>
+            )}
           </Li>
           <Li>
             <a href=''>Rates from last 7 days</a>
@@ -55,6 +59,6 @@ const Navigation = () => (
       </>
     </Suspense>
   </>
-);
+));
 
 export default Navigation;
