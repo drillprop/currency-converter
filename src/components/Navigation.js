@@ -4,6 +4,7 @@ import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
 import Loading from '../elements/Loading';
 import PropTypes from 'prop-types';
+import ChartContainer from './ChartContainer';
 
 const RatesContainer = lazy(() => import('./RatesContainer'));
 
@@ -44,7 +45,7 @@ const Navigation = withRouter(({ location }) => (
             )}
           </Li>
           <Li>
-            <a href=''>Rates from last 7 days</a>
+            <Link to='/charts'>Rates from last 7 days</Link>
           </Li>
         </Ul>
       </Nav>
@@ -55,6 +56,7 @@ const Navigation = withRouter(({ location }) => (
             path='/rates'
             component={props => <RatesContainer {...props} />}
           />
+          <Route path='/' component={props => <ChartContainer {...props} />} />
         </Switch>
       </>
     </Suspense>
