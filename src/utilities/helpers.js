@@ -1,3 +1,9 @@
+const getTodayDate = () => {
+  const now = new Date();
+  console.log(now.toISOString().slice(0, 10));
+  return now.toISOString().slice(0, 10);
+};
+
 const getPastDates = num => {
   const now = new Date();
   const getTodayDate = now.getDate();
@@ -8,4 +14,4 @@ const getPastDates = num => {
   return convertNewDate;
 };
 
-export { getPastDates };
+export { getPastDates, getTodayDate };
