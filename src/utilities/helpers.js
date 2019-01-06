@@ -1,4 +1,4 @@
-const getDates = num => {
+const getPastDates = num => {
   const now = new Date();
   const getTodayDate = now.getDate();
 
@@ -8,4 +8,4 @@ const getDates = num => {
   return convertNewDate;
 };
 
-export { getDates };
+export { getPastDates };
