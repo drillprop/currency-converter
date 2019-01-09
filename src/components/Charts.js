@@ -69,7 +69,6 @@ class Charts extends Component {
               fillOpacity={0.4}
             />
             <YAxis
-              padding={100}
               dataKey='mid'
               type='number'
               domain={[3, 5]}
