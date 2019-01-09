@@ -21,9 +21,14 @@ const CustomizedAxisTick = ({ payload, x, y }) => {
 };
 
 class Charts extends Component {
+  _isMounted = false;
   state = { dates: [], error: false };
 
   componentDidMount = () => {
+    this._isMounted = true;
+    this.fetchRates();
+  };
+  fetchRates = () => {
     const currency = 'eur';
     const startDate = getPastDates(350);
     const endDate = getTodayDate();
@@ -34,8 +39,15 @@ class Charts extends Component {
     setTimeout(() => controller.abort(), 10000);
     fetch(url, { signal })
       .then(data => data.json())
-      .then(json => this.setState({ dates: json.rates }))
+      .then(json => {
+        if (this._isMounted) {
+          this.setState({ dates: json.rates });
+        }
+      })
       .catch(error => this.setState({ error }));
+  };
+  componentWillUnmount = () => {
+    this._isMounted = false;
   };
 
   render() {

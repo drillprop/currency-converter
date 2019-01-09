@@ -3,6 +3,7 @@ import Loading from '../elements/Loading';
 import PropTypes from 'prop-types';
 
 class Currency extends PureComponent {
+  _isMounted = false;
   static propTypes = {
     currency: PropTypes.string
   };
@@ -14,6 +15,7 @@ class Currency extends PureComponent {
     error: false
   };
   componentDidMount = async () => {
+    this._isMounted = true;
     this.fetchRates();
   };
 
@@ -22,6 +24,9 @@ class Currency extends PureComponent {
     if (prevProps.currency !== currency) {
       this.fetchRates();
     }
+  };
+  componentWillUnmount = () => {
+    this._isMounted = false;
   };
 
   fetchRates = async () => {
@@ -32,7 +37,9 @@ class Currency extends PureComponent {
       );
       const json = await url.json();
       const rate = await json.rates[0].mid;
-      this.setState({ rate });
+      if (this._isMounted) {
+        this.setState({ rate });
+      }
     } catch (error) {
       console.log(error);
       this.setState({ error });
