@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
 import Loading from '../elements/Loading';
-import ChartContainer from './ChartContainer';
+
+const ChartContainer = lazy(() => import('./ChartContainer'));
 
 const RatesContainer = lazy(() => import('./RatesContainer'));
 
