@@ -1,6 +1,6 @@
 import React from 'react';
 import RatesTable from './RatesTable';
-import Aside from './Aside';
+import Aside from '../elements/Aside';
 import { Container } from '../elements/Container';
 import { StyledMain } from '../elements/Main';
 import RatesHeading from './RatesHeading';

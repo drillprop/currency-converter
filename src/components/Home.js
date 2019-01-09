@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomeHeading from './HomeHeading';
 import styled from 'styled-components';
 import { sansSerif } from '../utilities/fonts';
-import Aside from './Aside';
+import Aside from '../elements/Aside';
 import SwapButton from './SwapButton';
 import ForeignCurrency from './ForeignCurrency';
 import PlnCurrency from './PlnCurrency';
