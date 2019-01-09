@@ -3,7 +3,9 @@ import { Title, SubTitle } from '../elements/Titles';
 
 const RatesHeading = () => (
   <>
-    <Title>Current Exchange Rates</Title>
+    <Title>
+      Current <br /> Exchange <br /> Rates
+    </Title>
     <SubTitle>Based on NBP API</SubTitle>
   </>
 );
