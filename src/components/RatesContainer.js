@@ -8,7 +8,7 @@ import RatesHeading from './RatesHeading';
 const RatesContainer = () => (
   <>
     <Container>
-      <Aside />
+      <Aside currency={'chart'} />
       <StyledMain>
         <RatesHeading />
         <RatesTable />

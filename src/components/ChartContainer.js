@@ -5,7 +5,7 @@ import Aside from '../elements/Aside';
 
 const ChartContainer = () => (
   <Container>
-    <Aside />
+    <Aside currency='chart' />
     <Charts />
   </Container>
 );
