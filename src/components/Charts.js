@@ -6,7 +6,13 @@ import Loading from '../elements/Loading';
 const CustomizedAxisTick = ({ payload, x, y }) => {
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={10} y={0} dy={16} textAnchor='end' transform='rotate(-35)'>
+      <text
+        x={8}
+        y={0}
+        dy={12}
+        textAnchor='end'
+        transform='rotate(-35)'
+        fontSize={10}>
         {payload.value}
       </text>
       ;
@@ -51,10 +57,10 @@ class Charts extends Component {
       return (
         <>
           <AreaChart
-            width={500}
-            height={500}
+            width={450}
+            height={300}
             data={dates}
-            margin={{ top: 20, right: 30, left: 20, bottom: 50 }}>
+            margin={{ left: -35, top: 20, bottom: 50 }}>
             <Area
               type='monotone'
               dataKey='mid'
@@ -62,7 +68,13 @@ class Charts extends Component {
               fill='#82ca9d'
               fillOpacity={0.4}
             />
-            <YAxis dataKey='mid' type='number' domain={[3, 5]} />
+            <YAxis
+              padding={100}
+              dataKey='mid'
+              type='number'
+              domain={[3, 5]}
+              tick={{ fontSize: 10 }}
+            />
             <CartesianGrid stroke='#eee' />
             <XAxis
               interval={30}

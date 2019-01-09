@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
 import Loading from '../elements/Loading';
-import PropTypes from 'prop-types';
 import ChartContainer from './ChartContainer';
 
 const RatesContainer = lazy(() => import('./RatesContainer'));
@@ -13,13 +12,13 @@ const Nav = styled.nav`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 20px;
-  margin-right: 50px;
   text-transform: uppercase;
 `;
 
 const Ul = styled.ul`
   display: flex;
+  margin-top: 15px;
+  margin-right: 20px;
 `;
 
 const Li = styled.li`
