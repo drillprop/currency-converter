@@ -5,15 +5,18 @@ const StyledAside = styled.aside``;
 import { Spring } from 'react-spring';
 import PropTypes from 'prop-types';
 
-const Aside = memo(({ currency }) => (
-  <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-    {props => (
-      <StyledAside style={props}>
-        <Img currency={currency} />
-      </StyledAside>
-    )}
-  </Spring>
-));
+const Aside = memo(({ currency }) => {
+  console.log(currency);
+  return (
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+      {props => (
+        <StyledAside style={props}>
+          <Img currency={currency} />
+        </StyledAside>
+      )}
+    </Spring>
+  );
+});
 
 Aside.propTypes = {
   currency: PropTypes.string
