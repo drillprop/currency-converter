@@ -28,6 +28,15 @@ class Charts extends Component {
     this._isMounted = true;
     this.fetchRates();
   };
+  componentWillUnmount = () => {
+    this._isMounted = false;
+    clearTimeout(this.timeOut);
+  };
+
+  timeOut = arg => {
+    setTimeout(() => arg.abort(), 10000);
+  };
+
   fetchRates = () => {
     const { currency } = this.state;
     const startDate = getPastDates(350);
@@ -36,7 +45,9 @@ class Charts extends Component {
     const controller = new AbortController();
     const signal = controller.signal;
     // if pending takes 10 seconds, abort fetching
-    setTimeout(() => controller.abort(), 10000);
+    if (this._isMounted) {
+      this.timeOut(controller);
+    }
     fetch(url, { signal })
       .then(data => data.json())
       .then(json => {
@@ -45,9 +56,6 @@ class Charts extends Component {
         }
       })
       .catch(error => this.setState({ error }));
-  };
-  componentWillUnmount = () => {
-    this._isMounted = false;
   };
 
   render() {
