@@ -22,14 +22,14 @@ const CustomizedAxisTick = ({ payload, x, y }) => {
 
 class Charts extends Component {
   _isMounted = false;
-  state = { dates: [], error: false };
+  state = { dates: [], error: false, currency: 'usd' };
 
   componentDidMount = () => {
     this._isMounted = true;
     this.fetchRates();
   };
   fetchRates = () => {
-    const currency = 'eur';
+    const { currency } = this.state;
     const startDate = getPastDates(350);
     const endDate = getTodayDate();
     const url = `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/${startDate}/${endDate}/`;
