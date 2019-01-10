@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getPastDates, getTodayDate } from '../utilities/helpers';
 import { AreaChart, Area, YAxis, XAxis, CartesianGrid } from 'recharts';
 import Loading from '../elements/Loading';
+import ChartHeading from './ChartHeading';
+import Select from '../elements/Select';
 
 const CustomizedAxisTick = ({ payload, x, y }) => {
   return (
@@ -28,9 +30,20 @@ class Charts extends Component {
     this._isMounted = true;
     this.fetchRates();
   };
+  componentDidUpdate = (prevProps, prevState) => {
+    const { currency } = this.state;
+    if (prevState.currency !== currency) {
+      this.fetchRates();
+    }
+  };
+
   componentWillUnmount = () => {
     this._isMounted = false;
     clearTimeout(this.timeOut);
+  };
+
+  getCurrency = ({ currentTarget }) => {
+    this.setState({ currency: currentTarget.value });
   };
 
   timeOut = arg => {
@@ -59,7 +72,8 @@ class Charts extends Component {
   };
 
   render() {
-    const { dates, error } = this.state;
+    const { dates, error, currency } = this.state;
+    const currencyArray = ['usd', 'eur'];
     if (error) {
       return (
         <div>
@@ -75,35 +89,44 @@ class Charts extends Component {
       return <Loading />;
     } else {
       return (
-        <div style={{ position: 'relative', left: -22 }}>
-          <AreaChart
-            width={450}
-            height={300}
-            data={dates}
-            margin={{ left: -35, top: 20, bottom: 50, right: 20 }}>
-            <Area
-              type='monotone'
-              dataKey='mid'
-              stroke='#82ca9d'
-              fill='#82ca9d'
-              fillOpacity={0.4}
+        <>
+          <ChartHeading>
+            <Select
+              defaultValue={currency}
+              getCurrency={this.getCurrency}
+              currencyArray={currencyArray}
             />
-            <YAxis
-              dataKey='mid'
-              type='number'
-              domain={[3, 5]}
-              tick={{ fontSize: 10 }}
-              allowDataOverflow={true}
-            />
-            <CartesianGrid stroke='#eee' />
-            <XAxis
-              interval={30}
-              type='category'
-              dataKey='effectiveDate'
-              tick={<CustomizedAxisTick />}
-            />
-          </AreaChart>
-        </div>
+          </ChartHeading>
+          <div style={{ position: 'relative', left: -22 }}>
+            <AreaChart
+              width={450}
+              height={300}
+              data={dates}
+              margin={{ left: -35, top: 20, bottom: 50, right: 20 }}>
+              <Area
+                type='monotone'
+                dataKey='mid'
+                stroke='#82ca9d'
+                fill='#82ca9d'
+                fillOpacity={0.4}
+              />
+              <YAxis
+                dataKey='mid'
+                type='number'
+                domain={[3, 5]}
+                tick={{ fontSize: 10 }}
+                allowDataOverflow={true}
+              />
+              <CartesianGrid stroke='#eee' />
+              <XAxis
+                interval={30}
+                type='category'
+                dataKey='effectiveDate'
+                tick={<CustomizedAxisTick />}
+              />
+            </AreaChart>
+          </div>
+        </>
       );
     }
   }
