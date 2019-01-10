@@ -6,7 +6,7 @@ import Aside from '../elements/Aside';
 import SwapButton from './SwapButton';
 import ForeignCurrency from './ForeignCurrency';
 import PlnCurrency from './PlnCurrency';
-import Select from './Select';
+import Select from '../elements/Select';
 import { StyledMain } from '../elements/Main.js';
 
 const StyledInput = styled.input`
@@ -56,6 +56,7 @@ class Home extends Component {
 
   render() {
     const { amount, currency, swapToPln } = this.state;
+    const currencyArray = ['usd', 'eur', 'czk'];
     return (
       <>
         <Aside currency={currency} />
@@ -69,11 +70,19 @@ class Home extends Component {
           />
           {!swapToPln ? (
             <ForeignCurrency amount={amount} currency={currency}>
-              <Select getCurrency={this.getCurrency} currency={currency} />
+              <Select
+                getCurrency={this.getCurrency}
+                currency={currency}
+                currencyArray={currencyArray}
+              />
             </ForeignCurrency>
           ) : (
             <PlnCurrency amount={amount} currency={currency}>
-              <Select getCurrency={this.getCurrency} currency={currency} />
+              <Select
+                getCurrency={this.getCurrency}
+                currency={currency}
+                currencyArray={currencyArray}
+              />
             </PlnCurrency>
           )}
           <SwapButton swapCurrency={this.swapCurrency} />
