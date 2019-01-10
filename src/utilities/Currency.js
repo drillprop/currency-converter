@@ -22,6 +22,7 @@ class Currency extends PureComponent {
   componentDidUpdate = async prevProps => {
     const { currency } = this.props;
     if (prevProps.currency !== currency) {
+      this.setState({ rate: 0 });
       this.fetchRates();
     }
   };
