@@ -19,14 +19,12 @@ const Nav = styled.nav`
 
 const Ul = styled.ul`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-top: 15px;
-  margin-right: 20px;
 `;
 
 const Li = styled.li`
   list-style: none;
-  margin-left: 50px;
   font-size: 12px;
   a {
     text-decoration: none;
