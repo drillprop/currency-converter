@@ -5,27 +5,29 @@ import HomeContainer from './HomeContainer';
 import Loading from '../elements/Loading';
 
 const ChartContainer = lazy(() => import('./ChartContainer'));
-
 const RatesContainer = lazy(() => import('./RatesContainer'));
 
 const Nav = styled.nav`
   color: #444;
   position: absolute;
+  width: calc(100vw / 3 * 2);
   top: 0;
   right: 0;
   text-transform: uppercase;
+  background: #f1f1f1;
 `;
 
 const Ul = styled.ul`
   display: flex;
+  justify-content: flex-end;
   margin-top: 15px;
   margin-right: 20px;
 `;
 
 const Li = styled.li`
   list-style: none;
-  margin-left: 20px;
-  font-size: 13px;
+  margin-left: 50px;
+  font-size: 12px;
   a {
     text-decoration: none;
     color: #444;
@@ -38,14 +40,13 @@ const Navigation = withRouter(({ location }) => (
       <Nav>
         <Ul>
           <Li>
-            {location.pathname === '/' ? (
-              <Link to='/rates'>Current exchange Rates</Link>
-            ) : (
-              <Link to='/'>Back to Converter</Link>
-            )}
+            <Link to='/'>Curency Converter</Link>
           </Li>
           <Li>
-            <Link to='/charts'>Rates from last 7 days</Link>
+            <Link to='/rates'>Today's Exchange Rates</Link>
+          </Li>
+          <Li>
+            <Link to='/charts'>Exchange Rates Chart</Link>
           </Li>
         </Ul>
       </Nav>
