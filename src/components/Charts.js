@@ -7,11 +7,11 @@ const CustomizedAxisTick = ({ payload, x, y }) => {
   return (
     <g transform={`translate(${x},${y})`}>
       <text
-        x={8}
+        x={60}
         y={0}
-        dy={12}
+        dy={7}
         textAnchor='end'
-        transform='rotate(-35)'
+        transform='rotate(35)'
         fontSize={10}>
         {payload.value}
       </text>
@@ -67,12 +67,12 @@ class Charts extends Component {
       return <Loading />;
     } else {
       return (
-        <>
+        <div style={{ position: 'relative', left: -22 }}>
           <AreaChart
             width={450}
             height={300}
             data={dates}
-            margin={{ left: -35, top: 20, bottom: 50 }}>
+            margin={{ left: -35, top: 20, bottom: 50, right: 20 }}>
             <Area
               type='monotone'
               dataKey='mid'
@@ -85,6 +85,7 @@ class Charts extends Component {
               type='number'
               domain={[3, 5]}
               tick={{ fontSize: 10 }}
+              allowDataOverflow={true}
             />
             <CartesianGrid stroke='#eee' />
             <XAxis
@@ -94,7 +95,7 @@ class Charts extends Component {
               tick={<CustomizedAxisTick />}
             />
           </AreaChart>
-        </>
+        </div>
       );
     }
   }
