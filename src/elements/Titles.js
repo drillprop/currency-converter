@@ -5,7 +5,7 @@ const Title = styled.h1`
   color: #444;
   margin: 0;
   margin-bottom: 15px;
-  font-size: 45px;
+  font-size: 40px;
   font-family: ${serif};
   font-weight: 800;
 `;

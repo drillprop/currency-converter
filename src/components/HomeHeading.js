@@ -6,10 +6,7 @@ import PropTypes from 'prop-types';
 
 const HomeHeading = memo(({ currency, pln }) => (
   <header>
-    <Title>
-      Currency <br />
-      <span>Converter</span>
-    </Title>
+    <Title>Currency Converter</Title>
     {pln ? (
       <SubTitlePLN currency={currency} />
     ) : (
