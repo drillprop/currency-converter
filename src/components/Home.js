@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import HomeHeading from './HomeHeading';
 import styled from 'styled-components';
 import { sansSerif } from '../utilities/fonts';
@@ -20,76 +20,68 @@ const StyledInput = styled.input`
   height: 25px;
 `;
 
-class Home extends Component {
-  state = {
-    amount: '',
-    currency: 'usd',
-    swapToPln: false
-  };
+const Home = () => {
+  const [amount, setAmount] = useState('');
+  const [currency, setCurrency] = useState('usd');
+  const [pln, setToPln] = useState(false);
 
-  getAmount = e => {
+  const getAmount = e => {
     const { currentTarget } = e;
     const amount = currentTarget.value;
     const { length } = amount.toString();
     if (+amount) {
-      this.setState({ amount });
+      setAmount(() => amount);
     } else {
       let noLetter = [...amount];
       noLetter.pop();
       noLetter = noLetter.join('');
       e.currentTarget.value = noLetter;
-      this.setState({ amount: noLetter });
+      setAmount(() => noLetter);
     }
     if (length >= 5) {
       e.currentTarget.style.width = `${length * 9}px`;
     }
   };
 
-  getCurrency = ({ currentTarget }) => {
-    this.setState({ currency: currentTarget.value });
+  const getCurrency = ({ currentTarget }) => {
+    setCurrency(() => currentTarget.value);
   };
 
-  swapCurrency = () =>
-    this.setState(state => {
-      return { swapToPln: !state.swapToPln };
-    });
+  const swapCurrency = () => setToPln(() => !pln);
 
-  render() {
-    const { amount, currency, swapToPln } = this.state;
-    const currencyArray = ['usd', 'eur', 'czk'];
-    return (
-      <>
-        <Aside currency={currency} />
-        <StyledMain>
-          <HomeHeading currency={currency} pln={swapToPln} />
-          <StyledInput
-            placeholder='0'
-            type='text'
-            onChange={this.getAmount}
-            maxLength={15}
-          />
-          {!swapToPln ? (
-            <ForeignCurrency amount={amount} currency={currency}>
-              <Select
-                getCurrency={this.getCurrency}
-                currency={currency}
-                currencyArray={currencyArray}
-              />
-            </ForeignCurrency>
-          ) : (
-            <PlnCurrency amount={amount} currency={currency}>
-              <Select
-                getCurrency={this.getCurrency}
-                currency={currency}
-                currencyArray={currencyArray}
-              />
-            </PlnCurrency>
-          )}
-          <SwapButton swapCurrency={this.swapCurrency} />
-        </StyledMain>
-      </>
-    );
-  }
-}
+  const currencyArray = ['usd', 'eur', 'czk'];
+  return (
+    <>
+      <Aside currency={currency} />
+      <StyledMain>
+        <HomeHeading currency={currency} pln={pln} />
+        <StyledInput
+          placeholder='0'
+          type='text'
+          onChange={getAmount}
+          maxLength={15}
+        />
+        {!pln ? (
+          <ForeignCurrency amount={amount} currency={currency}>
+            <Select
+              getCurrency={getCurrency}
+              currency={currency}
+              currencyArray={currencyArray}
+            />
+          </ForeignCurrency>
+        ) : (
+          <PlnCurrency amount={amount} currency={currency}>
+            <Select
+              getCurrency={getCurrency}
+              currency={currency}
+              currencyArray={currencyArray}
+            />
+          </PlnCurrency>
+        )}
+        <SwapButton swapCurrency={swapCurrency} />
+      </StyledMain>
+    </>
+  );
+};
 
 export default Home;
