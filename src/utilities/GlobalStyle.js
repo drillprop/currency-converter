@@ -7,6 +7,7 @@ body {
   margin:0;
   font-family: ${sansSerif};
   font-size:16px;
+  color: #666;
 }
 
 `;
