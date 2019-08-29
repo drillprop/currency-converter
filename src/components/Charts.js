@@ -14,7 +14,8 @@ const CustomizedAxisTick = ({ payload, x, y }) => {
         dy={7}
         textAnchor='end'
         transform='rotate(35)'
-        fontSize={10}>
+        fontSize={10}
+      >
         {payload.value}
       </text>
       ;
@@ -54,7 +55,7 @@ class Charts extends Component {
     const { currency } = this.state;
     const startDate = getPastDates(350);
     const endDate = getTodayDate();
-    const url = `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/${startDate}/${endDate}/`;
+    const url = `https://cors-anywhere.herokuapp.com/http://api.nbp.pl/api/exchangerates/rates/a/${currency}/${startDate}/${endDate}/`;
     const controller = new AbortController();
     const signal = controller.signal;
     // if pending takes 10 seconds, abort fetching
@@ -80,7 +81,8 @@ class Charts extends Component {
           There was an error loading data. Try to{' '}
           <a
             style={{ color: '#82ca9d', cursor: 'pointer' }}
-            onClick={() => window.location.reload()}>
+            onClick={() => window.location.reload()}
+          >
             refresh this page
           </a>
         </div>
@@ -102,7 +104,8 @@ class Charts extends Component {
               width={450}
               height={300}
               data={dates}
-              margin={{ left: -35, top: 20, bottom: 50, right: 20 }}>
+              margin={{ left: -35, top: 20, bottom: 50, right: 20 }}
+            >
               <Area
                 type='monotone'
                 dataKey='mid'

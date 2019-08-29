@@ -2,9 +2,13 @@
   "name": "converter",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://drillprop.github.io/currency-converter",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server src/index.js --open"
+    "start": "webpack-dev-server src/index.js --open",
+    "build": "webpack --mode production src/index.js",
+    "deploy": "gh-pages -d dist",
+    "publish-demo": "npm run build && npm run deploy"
   },
   "keywords": [],
   "author": "",

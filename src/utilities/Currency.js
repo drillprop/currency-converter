@@ -34,7 +34,7 @@ class Currency extends PureComponent {
     const { currency } = this.props;
     try {
       const url = await fetch(
-        `http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
+        `https://cors-anywhere.herokuapp.com/http://api.nbp.pl/api/exchangerates/rates/a/${currency}/`
       );
       const json = await url.json();
       const rate = await json.rates[0].mid;
