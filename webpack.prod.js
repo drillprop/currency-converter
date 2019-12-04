@@ -10,20 +10,6 @@ module.exports = webpackMerge(common, {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
-      },
-      {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           'file-loader',
@@ -32,7 +18,7 @@ module.exports = webpackMerge(common, {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 30
               }
             }
           }
