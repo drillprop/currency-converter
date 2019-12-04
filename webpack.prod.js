@@ -12,7 +12,6 @@ module.exports = webpackMerge(common, {
       {
         test: /\.(png|jpe?g|gif)$/,
         use: [
-          'file-loader',
           {
             loader: 'image-webpack-loader',
             options: {
