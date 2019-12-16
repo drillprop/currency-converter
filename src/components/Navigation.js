@@ -15,17 +15,25 @@ const Nav = styled.nav`
   right: 0;
   text-transform: uppercase;
   background: #f1f1f1;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const Ul = styled.ul`
   display: flex;
   justify-content: space-around;
   margin-top: 15px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Li = styled.li`
   list-style: none;
   font-size: 12px;
+  margin-top: 10px;
   a {
     text-decoration: none;
     color: #444;

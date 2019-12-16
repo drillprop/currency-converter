@@ -13,6 +13,9 @@ const Image = styled(animated.img)`
   max-width: 100%;
   height: 100vh;
   object-fit: cover;
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const images = [
@@ -61,7 +64,8 @@ export default class Img extends React.PureComponent {
         items={this.state.index}
         from={{ position: 'relative', opacity: 0 }}
         enter={{ opacity: 1 }}
-        leave={{ display: 'none', opacity: 0 }}>
+        leave={{ display: 'none', opacity: 0 }}
+      >
         {index => images[index]}
       </Transition>
     );
