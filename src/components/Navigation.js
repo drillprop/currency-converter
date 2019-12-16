@@ -34,21 +34,21 @@ const Li = styled.li`
 
 const Navigation = withRouter(({ location }) => (
   <>
-    <Suspense fallback={<Loading />}>
-      <Nav>
-        <Ul>
-          <Li>
-            <Link to='/'>Curency Converter</Link>
-          </Li>
-          <Li>
-            <Link to='/rates'>Today's Exchange Rates</Link>
-          </Li>
-          <Li>
-            <Link to='/charts'>Exchange Rates Chart</Link>
-          </Li>
-        </Ul>
-      </Nav>
-      <>
+    <Nav>
+      <Ul>
+        <Li>
+          <Link to='/'>Curency Converter</Link>
+        </Li>
+        <Li>
+          <Link to='/rates'>Today's Exchange Rates</Link>
+        </Li>
+        <Li>
+          <Link to='/charts'>Exchange Rates Chart</Link>
+        </Li>
+      </Ul>
+    </Nav>
+    <>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path='/' component={HomeContainer} />
           <Route
@@ -57,8 +57,8 @@ const Navigation = withRouter(({ location }) => (
           />
           <Route path='/' component={props => <ChartContainer {...props} />} />
         </Switch>
-      </>
-    </Suspense>
+      </Suspense>
+    </>
   </>
 ));
 
