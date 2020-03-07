@@ -7,6 +7,7 @@ import Select from '../elements/Select';
 import { SubTitle, Title } from '../elements/Titles';
 import { getPastDates, getTodayDate } from '../utilities/helpers';
 import Chart from './Chart';
+import ChartError from './ChartError';
 
 class Charts extends Component {
   _isMounted = false;
@@ -61,17 +62,7 @@ class Charts extends Component {
     const { dates, error, currency } = this.state;
     const currencyArray = ['usd', 'eur'];
     if (error) {
-      return (
-        <div>
-          There was an error loading data. Try to{' '}
-          <a
-            style={{ color: '#82ca9d', cursor: 'pointer' }}
-            onClick={() => window.location.reload()}
-          >
-            refresh this page
-          </a>
-        </div>
-      );
+      return <ChartError />;
     } else if (!dates.length) {
       return <Loading />;
     } else {
