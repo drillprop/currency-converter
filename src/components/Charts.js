@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { getPastDates, getTodayDate } from '../utilities/helpers';
-import { AreaChart, Area, YAxis, XAxis, CartesianGrid } from 'recharts';
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { Container } from '../elements/Container';
 import Loading from '../elements/Loading';
-import ChartHeading from './ChartHeading';
 import Select from '../elements/Select';
+import { SubTitle, Title } from '../elements/Titles';
+import { getPastDates, getTodayDate } from '../utilities/helpers';
+import Aside from '../elements/Aside';
+import { StyledMain } from '../elements/Main';
 
 const CustomizedAxisTick = ({ payload, x, y }) => {
   return (
@@ -91,45 +94,50 @@ class Charts extends Component {
       return <Loading />;
     } else {
       return (
-        <>
-          <ChartHeading>
-            <Select
-              defaultValue={currency}
-              getCurrency={this.getCurrency}
-              currencyArray={currencyArray}
-            />
-          </ChartHeading>
-          <div style={{ position: 'relative', left: -22 }}>
-            <AreaChart
-              width={450}
-              height={300}
-              data={dates}
-              margin={{ left: -35, top: 20, bottom: 50, right: 20 }}
-            >
-              <Area
-                type='monotone'
-                dataKey='mid'
-                stroke='#82ca9d'
-                fill='#82ca9d'
-                fillOpacity={0.4}
+        <Container>
+          <Aside currency='chart' />
+          <StyledMain>
+            <Title>Currency Exchange Rates Chart</Title>
+            <SubTitle>
+              <Select
+                defaultValue={currency}
+                getCurrency={this.getCurrency}
+                currencyArray={currencyArray}
               />
-              <YAxis
-                dataKey='mid'
-                type='number'
-                domain={[3, 5]}
-                tick={{ fontSize: 10 }}
-                allowDataOverflow={true}
-              />
-              <CartesianGrid stroke='#eee' />
-              <XAxis
-                interval={30}
-                type='category'
-                dataKey='effectiveDate'
-                tick={<CustomizedAxisTick />}
-              />
-            </AreaChart>
-          </div>
-        </>
+              to PLN (last 360 days)
+            </SubTitle>
+            <div style={{ position: 'relative', left: -22 }}>
+              <AreaChart
+                width={450}
+                height={300}
+                data={dates}
+                margin={{ left: -35, top: 20, bottom: 50, right: 20 }}
+              >
+                <Area
+                  type='monotone'
+                  dataKey='mid'
+                  stroke='#82ca9d'
+                  fill='#82ca9d'
+                  fillOpacity={0.4}
+                />
+                <YAxis
+                  dataKey='mid'
+                  type='number'
+                  domain={[3, 5]}
+                  tick={{ fontSize: 10 }}
+                  allowDataOverflow={true}
+                />
+                <CartesianGrid stroke='#eee' />
+                <XAxis
+                  interval={30}
+                  type='category'
+                  dataKey='effectiveDate'
+                  tick={<CustomizedAxisTick />}
+                />
+              </AreaChart>
+            </div>
+          </StyledMain>
+        </Container>
       );
     }
   }

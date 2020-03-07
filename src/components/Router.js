@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Loading from '../elements/Loading';
 import Home from './Home';
 
-const ChartContainer = lazy(() => import('./ChartContainer'));
+const Charts = lazy(() => import('./Charts'));
 const Rates = lazy(() => import('./Rates'));
 
 const Router = () => {
@@ -12,7 +12,7 @@ const Router = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/rates' component={props => <Rates {...props} />} />
-        <Route path='/' component={props => <ChartContainer {...props} />} />
+        <Route path='/charts' component={props => <Charts {...props} />} />
       </Switch>
     </Suspense>
   );
