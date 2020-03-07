@@ -1,8 +1,19 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from './Container';
+import React from 'react';
+import styled from 'styled-components';
 import Aside from './Aside';
-import { StyledMain } from './Main';
+
+export const Container = styled.div`
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+`;
+
+export const StyledMain = styled.main`
+  margin: 0 auto;
+  margin-top: 8rem;
+  width: 400px;
+`;
 
 const Layout = ({ currency, children }) => {
   return (
