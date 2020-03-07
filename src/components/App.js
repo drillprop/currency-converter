@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GlobalStyle from '../utilities/GlobalStyle';
 import Navigation from './Navigation';
 import { HashRouter } from 'react-router-dom';
+import Router from './Router';
 
 class App extends Component {
   render() {
@@ -9,7 +10,10 @@ class App extends Component {
       <>
         <GlobalStyle />
         <HashRouter>
-          <Navigation />
+          <>
+            <Navigation />
+            <Router />
+          </>
         </HashRouter>
       </>
     );

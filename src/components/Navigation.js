@@ -1,11 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Route, Link, Switch, withRouter } from 'react-router-dom';
-import HomeContainer from './HomeContainer';
-import Loading from '../elements/Loading';
-
-const ChartContainer = lazy(() => import('./ChartContainer'));
-const RatesContainer = lazy(() => import('./RatesContainer'));
 
 const Nav = styled.nav`
   color: #444;
@@ -40,34 +35,20 @@ const Li = styled.li`
   }
 `;
 
-const Navigation = withRouter(({ location }) => (
-  <>
-    <Nav>
-      <Ul>
-        <Li>
-          <Link to='/'>Curency Converter</Link>
-        </Li>
-        <Li>
-          <Link to='/rates'>Today's Exchange Rates</Link>
-        </Li>
-        <Li>
-          <Link to='/charts'>Exchange Rates Chart</Link>
-        </Li>
-      </Ul>
-    </Nav>
-    <>
-      <Suspense fallback={<Loading />}>
-        <Switch>
-          <Route exact path='/' component={HomeContainer} />
-          <Route
-            path='/rates'
-            component={props => <RatesContainer {...props} />}
-          />
-          <Route path='/' component={props => <ChartContainer {...props} />} />
-        </Switch>
-      </Suspense>
-    </>
-  </>
-));
+const Navigation = () => (
+  <Nav>
+    <Ul>
+      <Li>
+        <Link to='/'>Curency Converter</Link>
+      </Li>
+      <Li>
+        <Link to='/rates'>Today's Exchange Rates</Link>
+      </Li>
+      <Li>
+        <Link to='/charts'>Exchange Rates Chart</Link>
+      </Li>
+    </Ul>
+  </Nav>
+);
 
 export default Navigation;
