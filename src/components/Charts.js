@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Aside from '../elements/Aside';
-import { Container } from '../elements/Container';
+import Layout from '../elements/Layout';
 import Loading from '../elements/Loading';
-import { StyledMain } from '../elements/Main';
 import Select from '../elements/Select';
 import { SubTitle, Title } from '../elements/Titles';
 import { getPastDates, getTodayDate } from '../utilities/helpers';
@@ -67,21 +65,18 @@ class Charts extends Component {
       return <Loading />;
     } else {
       return (
-        <Container>
-          <Aside currency='chart' />
-          <StyledMain>
-            <Title>Currency Exchange Rates Chart</Title>
-            <SubTitle>
-              <Select
-                defaultValue={currency}
-                getCurrency={this.getCurrency}
-                currencyArray={currencyArray}
-              />
-              to PLN (last 360 days)
-            </SubTitle>
-            <Chart dates={dates} />
-          </StyledMain>
-        </Container>
+        <Layout currency='chart'>
+          <Title>Currency Exchange Rates Chart</Title>
+          <SubTitle>
+            <Select
+              defaultValue={currency}
+              getCurrency={this.getCurrency}
+              currencyArray={currencyArray}
+            />
+            to PLN (last 360 days)
+          </SubTitle>
+          <Chart dates={dates} />
+        </Layout>
       );
     }
   }

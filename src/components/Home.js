@@ -1,14 +1,12 @@
-import React, { Component, useState } from 'react';
-import HomeHeading from './HomeHeading';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { sansSerif } from '../utilities/fonts';
-import Aside from '../elements/Aside';
-import SwapButton from './SwapButton';
-import ForeignCurrency from './ForeignCurrency';
-import PlnCurrency from './PlnCurrency';
+import Layout from '../elements/Layout';
 import Select from '../elements/Select';
-import { StyledMain } from '../elements/Main.js';
-import { Container } from '../elements/Container';
+import { sansSerif } from '../utilities/fonts';
+import ForeignCurrency from './ForeignCurrency';
+import HomeHeading from './HomeHeading';
+import PlnCurrency from './PlnCurrency';
+import SwapButton from './SwapButton';
 
 const StyledInput = styled.input`
   color: #666;
@@ -52,36 +50,33 @@ const Home = () => {
 
   const currencyArray = ['usd', 'eur', 'czk'];
   return (
-    <Container>
-      <Aside currency={currency} />
-      <StyledMain>
-        <HomeHeading currency={currency} pln={pln} />
-        <StyledInput
-          placeholder='0'
-          type='text'
-          onChange={getAmount}
-          maxLength={15}
-        />
-        {!pln ? (
-          <ForeignCurrency amount={amount} currency={currency}>
-            <Select
-              getCurrency={getCurrency}
-              currency={currency}
-              currencyArray={currencyArray}
-            />
-          </ForeignCurrency>
-        ) : (
-          <PlnCurrency amount={amount} currency={currency}>
-            <Select
-              getCurrency={getCurrency}
-              currency={currency}
-              currencyArray={currencyArray}
-            />
-          </PlnCurrency>
-        )}
-        <SwapButton swapCurrency={swapCurrency} />
-      </StyledMain>
-    </Container>
+    <Layout currency={currency}>
+      <HomeHeading currency={currency} pln={pln} />
+      <StyledInput
+        placeholder='0'
+        type='text'
+        onChange={getAmount}
+        maxLength={15}
+      />
+      {!pln ? (
+        <ForeignCurrency amount={amount} currency={currency}>
+          <Select
+            getCurrency={getCurrency}
+            currency={currency}
+            currencyArray={currencyArray}
+          />
+        </ForeignCurrency>
+      ) : (
+        <PlnCurrency amount={amount} currency={currency}>
+          <Select
+            getCurrency={getCurrency}
+            currency={currency}
+            currencyArray={currencyArray}
+          />
+        </PlnCurrency>
+      )}
+      <SwapButton swapCurrency={swapCurrency} />
+    </Layout>
   );
 };
 
