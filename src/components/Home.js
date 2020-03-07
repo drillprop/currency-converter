@@ -8,6 +8,7 @@ import ForeignCurrency from './ForeignCurrency';
 import PlnCurrency from './PlnCurrency';
 import Select from '../elements/Select';
 import { StyledMain } from '../elements/Main.js';
+import { Container } from '../elements/Container';
 
 const StyledInput = styled.input`
   color: #666;
@@ -51,7 +52,7 @@ const Home = () => {
 
   const currencyArray = ['usd', 'eur', 'czk'];
   return (
-    <>
+    <Container>
       <Aside currency={currency} />
       <StyledMain>
         <HomeHeading currency={currency} pln={pln} />
@@ -80,7 +81,7 @@ const Home = () => {
         )}
         <SwapButton swapCurrency={swapCurrency} />
       </StyledMain>
-    </>
+    </Container>
   );
 };
 
