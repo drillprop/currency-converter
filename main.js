@@ -5,6 +5,9 @@
   font-size: 40px;
   font-family: ${a.b};
   font-weight: 800;
+  @media (max-width: 800px) {
+    font-size: 26px;
+  }
 `,i=r.c.h3`
   margin: 0;
   margin-bottom: 20px;
@@ -12,6 +15,9 @@
   font-family: ${a.a};
   font-weight: 400;
   color: #555;
+  @media (max-width: 800px) {
+    font-size: 16px;
+  }
 `},function(e,t,n){"use strict";e.exports=n(37)},function(e,t,n){"use strict";!function e(){if("undefined"!=typeof __REACT_DEVTOOLS_GLOBAL_HOOK__&&"function"==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE){0;try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(e)}catch(e){console.error(e)}}}(),e.exports=n(34)},function(e,t,n){"use strict";var r=n(0),a=n.n(r);t.a=()=>a.a.createElement("div",{style:{display:"inline"}},"Loading...")},function(e,t,n){"use strict";var r=n(0),a=n.n(r),o=n(11),i=n(2),l=n.n(i);function u(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}class c extends r.PureComponent{constructor(...e){super(...e),u(this,"_isMounted",!1),u(this,"state",{rate:0,error:!1}),u(this,"componentDidMount",async()=>{this._isMounted=!0,this.fetchRates()}),u(this,"componentDidUpdate",async e=>{const{currency:t}=this.props;e.currency!==t&&(this.setState({rate:0}),this.fetchRates())}),u(this,"componentWillUnmount",()=>{this._isMounted=!1}),u(this,"fetchRates",async()=>{const{currency:e}=this.props;try{const t=await fetch(`https://cors-anywhere.herokuapp.com/http://api.nbp.pl/api/exchangerates/rates/a/${e}/`),n=await t.json(),r=await n.rates[0].mid;this._isMounted&&this.setState({rate:r})}catch(e){console.log(e),this.setState({error:e})}})}render(){const{amount:e,children:t,currency:n,pln:r}=this.props,{rate:i,error:l}=this.state;if(l)return t("Couldn't fetch a data");if(i){return t(r?(Number(e)/i).toFixed(2):(Number(e)*i).toFixed(2),n)}return t(e?a.a.createElement(o.a,null):"0.00",n)}}u(c,"propTypes",{currency:l.a.string}),u(c,"defaultProps",{currency:"usd"}),t.a=c},,function(e,t,n){"use strict";var r=n(0),a=n.n(r),o=n(3),i=n(6),l=n(2),u=n.n(l);const c=o.c.select`
   color: #666;
   margin: 0;
@@ -29,13 +35,14 @@
     display: none;
   }
 `,b=[e=>i.a.createElement(g,{style:{...e},src:c.a}),e=>i.a.createElement(g,{style:{...e},src:f.a}),e=>i.a.createElement(g,{style:{...e},src:p.a}),e=>i.a.createElement(g,{style:{...e},src:m.a})];class w extends i.a.PureComponent{constructor(...e){super(...e),v(this,"componentDidMount",()=>{this.setIndex()}),v(this,"state",{index:0}),v(this,"componentDidUpdate",e=>{const{currency:t}=this.props;e.currency!==t&&this.setIndex()}),v(this,"setIndex",()=>{const{currency:e}=this.props;switch(e){case"usd":this.setState({index:0});break;case"eur":this.setState({index:1});break;case"czk":this.setState({index:2});break;case"chart":this.setState({index:3})}})}render(){return i.a.createElement(y.b,{native:!0,items:this.state.index,from:{position:"relative",opacity:0},enter:{opacity:1},leave:{display:"none",opacity:0}},e=>b[e])}}v(w,"propTypes",{currency:a.a.string});const k=l.c.aside``,x=Object(o.memo)(({currency:e})=>i.a.createElement(y.a,{from:{opacity:0},to:{opacity:1}},t=>i.a.createElement(k,{style:t},i.a.createElement(w,{currency:e}))));x.propTypes={currency:a.a.string};var E=x;const S=l.c.div`
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `,T=l.c.main`
   margin: 0 auto;
   margin-top: 8rem;
-  width: 400px;
 `,C=({currency:e,children:t})=>i.a.createElement(S,null,i.a.createElement(E,{currency:e}),i.a.createElement(T,null,t));C.propTypes={currency:a.a.string};t.a=C},function(e,t,n){"use strict";
 /*
 object-assign
@@ -202,4 +209,4 @@ body {
   font-family: ${u.a};
   width: 50px;
   height: 25px;
-`;var He=()=>{const[e,t]=Object(r.useState)(""),[n,o]=Object(r.useState)("usd"),[i,l]=Object(r.useState)(!1),u=({currentTarget:e})=>{o(()=>e.value)},c=["usd","eur","czk"];return a.a.createElement(Te.a,{currency:n},a.a.createElement(Fe,{currency:n,pln:i}),a.a.createElement(We,{placeholder:"0",type:"text",onChange:e=>{const{currentTarget:n}=e,r=n.value,{length:a}=r.toString();if(+r)t(()=>r);else{let n=[...r];n.pop(),n=n.join(""),e.currentTarget.value=n,t(()=>n)}a>=5&&(e.currentTarget.style.width=9*a+"px")},maxLength:15}),i?a.a.createElement(De,{amount:e,currency:n},a.a.createElement(Ce.a,{getCurrency:u,currency:n,currencyArray:c})):a.a.createElement(_e,{amount:e,currency:n},a.a.createElement(Ce.a,{getCurrency:u,currency:n,currencyArray:c})),a.a.createElement($e,{swapCurrency:()=>l(()=>!i)}))};const Be=Object(r.lazy)(()=>Promise.all([n.e(1),n.e(2)]).then(n.bind(null,373))),qe=Object(r.lazy)(()=>n.e(3).then(n.bind(null,374)));var Qe=()=>a.a.createElement(r.Suspense,{fallback:a.a.createElement(Se.a,null)},a.a.createElement(ae,null,a.a.createElement(Z,{exact:!0,path:"/",component:He}),a.a.createElement(Z,{path:"/rates",component:e=>a.a.createElement(qe,e)}),a.a.createElement(Z,{path:"/charts",component:e=>a.a.createElement(Be,e)})));class Ke extends r.Component{render(){return a.a.createElement(a.a.Fragment,null,a.a.createElement(c,null),a.a.createElement(oe,null,a.a.createElement(a.a.Fragment,null,a.a.createElement(Ee,null),a.a.createElement(Qe,null))))}}var Ge=Ke;const Ye=document.getElementById("root");i.a.render(a.a.createElement(Ge,null),Ye)}]);
+`;var He=()=>{const[e,t]=Object(r.useState)(""),[n,o]=Object(r.useState)("usd"),[i,l]=Object(r.useState)(!1),u=({currentTarget:e})=>{o(()=>e.value)},c=["usd","eur","czk"];return a.a.createElement(Te.a,{currency:n},a.a.createElement(Fe,{currency:n,pln:i}),a.a.createElement(We,{placeholder:"0",type:"text",onChange:e=>{const{currentTarget:n}=e,r=n.value,{length:a}=r.toString();if(+r)t(()=>r);else{let n=[...r];n.pop(),n=n.join(""),e.currentTarget.value=n,t(()=>n)}a>=5&&(e.currentTarget.style.width=9*a+"px")},maxLength:15}),i?a.a.createElement(De,{amount:e,currency:n},a.a.createElement(Ce.a,{getCurrency:u,currency:n,currencyArray:c})):a.a.createElement(_e,{amount:e,currency:n},a.a.createElement(Ce.a,{getCurrency:u,currency:n,currencyArray:c})),a.a.createElement($e,{swapCurrency:()=>l(()=>!i)}))};const Be=Object(r.lazy)(()=>Promise.all([n.e(1),n.e(2)]).then(n.bind(null,377))),qe=Object(r.lazy)(()=>n.e(3).then(n.bind(null,378)));var Qe=()=>a.a.createElement(r.Suspense,{fallback:a.a.createElement(Se.a,null)},a.a.createElement(ae,null,a.a.createElement(Z,{exact:!0,path:"/",component:He}),a.a.createElement(Z,{path:"/rates",component:e=>a.a.createElement(qe,e)}),a.a.createElement(Z,{path:"/charts",component:e=>a.a.createElement(Be,e)})));class Ke extends r.Component{render(){return a.a.createElement(a.a.Fragment,null,a.a.createElement(c,null),a.a.createElement(oe,null,a.a.createElement(a.a.Fragment,null,a.a.createElement(Ee,null),a.a.createElement(Qe,null))))}}var Ge=Ke;const Ye=document.getElementById("root");i.a.render(a.a.createElement(Ge,null),Ye)}]);
