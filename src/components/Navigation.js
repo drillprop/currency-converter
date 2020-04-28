@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -33,6 +33,10 @@ const HamburgerInvisibleCheckbox = styled.input`
   :checked ~ div:last-of-type {
     transform: rotate(-45deg);
   }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const HamburgerBar = styled.div`
@@ -45,6 +49,7 @@ const HamburgerBar = styled.div`
 `;
 
 const Nav = styled.nav`
+  z-index: 4;
   color: #444;
   position: absolute;
   width: calc(100vw / 3 * 2);
@@ -54,14 +59,20 @@ const Nav = styled.nav`
   background: #f1f1f1;
   @media (max-width: 800px) {
     width: 100%;
+    height: 100vh;
+    transition: 500ms;
+    ${(props) => (props.isMenuVisible ? `opacity: 1` : 'opacity: 0')};
   }
 `;
 
 const Ul = styled.ul`
+  padding: 0;
   display: flex;
   justify-content: space-around;
   margin-top: 15px;
   @media (max-width: 800px) {
+    margin-top: 130px;
+    justify-content: unset;
     flex-direction: column;
     align-items: center;
   }
@@ -75,18 +86,28 @@ const Li = styled.li`
     text-decoration: none;
     color: #444;
   }
+  @media (max-width: 800px) {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 24px;
+  }
 `;
 
 const Navigation = () => {
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
     <>
       <HamburgerContainer>
-        <HamburgerInvisibleCheckbox type='checkbox' />
+        <HamburgerInvisibleCheckbox
+          type='checkbox'
+          checked={isMenuVisible}
+          onChange={() => setIsMenuVisible(!isMenuVisible)}
+        />
         <HamburgerBar />
         <HamburgerBar />
         <HamburgerBar />
       </HamburgerContainer>
-      <Nav>
+      <Nav isMenuVisible={isMenuVisible}>
         <Ul>
           <Li>
             <Link to='/'>Curency Converter</Link>
