@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HamburgerContainer = styled.div`
@@ -60,8 +60,7 @@ const Nav = styled.nav`
   @media (max-width: 800px) {
     width: 100%;
     height: 100vh;
-    transition: 500ms;
-    ${(props) => (props.isMenuVisible ? `opacity: 1` : 'opacity: 0')};
+    ${(props) => (props.isMenuVisible ? `display: block` : 'display: none')};
   }
 `;
 
@@ -93,8 +92,13 @@ const Li = styled.li`
   }
 `;
 
-const Navigation = () => {
+const Navigation = (props) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  useEffect(() => {
+    setIsMenuVisible(false);
+  }, [props.location.pathname]);
+
   return (
     <>
       <HamburgerContainer>
@@ -124,4 +128,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default withRouter(Navigation);
