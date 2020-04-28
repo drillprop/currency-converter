@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const HamburgerContainer = styled.div`
   display: none;
@@ -59,8 +59,19 @@ const Nav = styled.nav`
   background: #f1f1f1;
   @media (max-width: 800px) {
     width: 100%;
-    height: 100vh;
-    ${(props) => (props.isMenuVisible ? `display: block` : 'display: none')};
+    ${(props) =>
+      props.isMenuVisible
+        ? css`
+            opacity: 1;
+            height: 100vh;
+            transition: opacity 400ms 0ms;
+          `
+        : css`
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: height 0ms 400ms, opacity 400ms 0ms;
+          `};
   }
 `;
 
