@@ -14,7 +14,7 @@ const StyledSelect = styled.select`
 
 const Select = memo(({ getCurrency, currency, currencyArray }) => (
   <StyledSelect defaultValue={currency} onChange={getCurrency}>
-    {currencyArray.map(currency => (
+    {currencyArray.map((currency) => (
       <option key={currency} value={currency}>
         {currency.toUpperCase()}
       </option>
@@ -25,7 +25,7 @@ const Select = memo(({ getCurrency, currency, currencyArray }) => (
 Select.propTypes = {
   getCurrency: PropTypes.func,
   currency: PropTypes.string,
-  currencyArray: PropTypes.array
+  currencyArray: PropTypes.array,
 };
 
 export default Select;
