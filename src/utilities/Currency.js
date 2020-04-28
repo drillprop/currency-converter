@@ -5,21 +5,21 @@ import PropTypes from 'prop-types';
 class Currency extends PureComponent {
   _isMounted = false;
   static propTypes = {
-    currency: PropTypes.string
+    currency: PropTypes.string,
   };
   static defaultProps = {
-    currency: 'usd'
+    currency: 'usd',
   };
   state = {
     rate: 0,
-    error: false
+    error: false,
   };
   componentDidMount = async () => {
     this._isMounted = true;
     this.fetchRates();
   };
 
-  componentDidUpdate = async prevProps => {
+  componentDidUpdate = async (prevProps) => {
     const { currency } = this.props;
     if (prevProps.currency !== currency) {
       this.setState({ rate: 0 });
@@ -59,7 +59,7 @@ class Currency extends PureComponent {
         : (Number(amount) * rate).toFixed(2);
       return children(value, currency);
     } else {
-      return children(amount ? <Loading /> : '0.00', currency);
+      return children(amount ? <Loading inline /> : '0.00', currency);
     }
   }
 }
