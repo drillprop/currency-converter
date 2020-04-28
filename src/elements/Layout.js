@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import Aside from './Aside';
 
 export const Container = styled.div`
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const StyledMain = styled.main`
@@ -25,7 +27,7 @@ const Layout = ({ currency, children }) => {
 };
 
 Layout.propTypes = {
-  currency: PropTypes.string
+  currency: PropTypes.string,
 };
 
 export default Layout;
