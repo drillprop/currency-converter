@@ -31,7 +31,7 @@ class Charts extends Component {
     this.setState({ currency: currentTarget.value });
   };
 
-  timeOut = arg => {
+  timeOut = (arg) => {
     setTimeout(() => arg.abort(), 10000);
   };
 
@@ -47,13 +47,13 @@ class Charts extends Component {
       this.timeOut(controller);
     }
     fetch(url, { signal })
-      .then(data => data.json())
-      .then(json => {
+      .then((data) => data.json())
+      .then((json) => {
         if (this._isMounted) {
           this.setState({ dates: json.rates });
         }
       })
-      .catch(error => this.setState({ error }));
+      .catch((error) => this.setState({ error }));
   };
 
   render() {
@@ -66,7 +66,11 @@ class Charts extends Component {
     } else {
       return (
         <Layout currency='chart'>
-          <Title>Currency Exchange Rates Chart</Title>
+          <Title>
+            Currency Exchange Rates
+            <br />
+            Chart
+          </Title>
           <SubTitle>
             <Select
               defaultValue={currency}

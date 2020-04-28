@@ -14,7 +14,6 @@ export const Container = styled.div`
 export const StyledMain = styled.main`
   margin: 0 auto;
   margin-top: 8rem;
-  width: 400px;
 `;
 
 const Layout = ({ currency, children }) => {
