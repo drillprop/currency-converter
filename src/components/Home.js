@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Layout from '../elements/Layout';
 import Select from '../elements/Select';
-import { sansSerif } from '../utilities/fonts';
+import { primary } from '../utilities/fonts';
 import ForeignCurrency from './ForeignCurrency';
 import HomeHeading from './HomeHeading';
 import PlnCurrency from './PlnCurrency';
@@ -14,7 +14,7 @@ const StyledInput = styled.input`
   margin: 0;
   font-size: 16px;
   border: none;
-  font-family: ${sansSerif};
+  font-family: ${primary};
   width: 50px;
   height: 25px;
 `;
@@ -24,7 +24,7 @@ const Home = () => {
   const [currency, setCurrency] = useState('usd');
   const [pln, setToPln] = useState(false);
 
-  const getAmount = e => {
+  const getAmount = (e) => {
     const { currentTarget } = e;
     const amount = currentTarget.value;
     const { length } = amount.toString();

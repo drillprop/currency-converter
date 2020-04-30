@@ -1,2 +1,2 @@
-export const serif = ` 'Ubuntu', sans-serif;`;
-export const sansSerif = `'Poppins', sans-serif`;
+export const secondary = ` 'Ubuntu', sans-serif;`;
+export const primary = `'Poppins', sans-serif`;

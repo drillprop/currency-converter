@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { sansSerif } from '../utilities/fonts';
+import { primary } from '../utilities/fonts';
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
   align-self: center;
   display: block;
-  font-family: ${sansSerif};
+  font-family: ${primary};
   margin-top: 30px;
   background: #444;
   text-transform: uppercase;
@@ -20,7 +20,7 @@ const SwapButton = memo(({ swapCurrency }) => (
 ));
 
 SwapButton.propTypes = {
-  swapCurrency: PropTypes.func
+  swapCurrency: PropTypes.func,
 };
 
 export default SwapButton;

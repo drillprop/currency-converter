@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { sansSerif } from '../utilities/fonts';
+import { primary } from '../utilities/fonts';
 import PropTypes from 'prop-types';
 
 const StyledSelect = styled.select`
@@ -8,7 +8,7 @@ const StyledSelect = styled.select`
   margin: 0;
   border: none;
   height: 34px;
-  font-family: ${sansSerif};
+  font-family: ${primary};
   font-size: 16px;
 `;
 
