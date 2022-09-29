@@ -36,7 +36,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-spring": "^7.2.11",
-    "recharts": "^1.8.5",
+    "recharts": "^2.1.14",
     "styled-components": "^4.4.1"
   }
 }
